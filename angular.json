@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "hnt22",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
