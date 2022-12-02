@@ -1,37 +1,45 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '@environments/environment';
+import { User, UserDetails } from '@models/user';
 import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
-import { map, tap, delay, finalize } from 'rxjs/operators';
-
-import { environment } from 'src/environments/environment';
-import { User } from 'src/models/user';
+import { tap, delay, finalize } from 'rxjs/operators';
 
 interface LoginResult extends User {
   accessToken: string;
   refreshToken: string;
 }
 
+export interface SignUpUser extends UserDetails {
+  password: string;
+}
+
+export interface Login {
+  username: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  private readonly apiUrl = `${environment.apiUrl}/api/account`;
   private timer: Subscription | null = null;
-  private _user = new BehaviorSubject<User | null>(null);
-  user$ = this._user.asObservable();
+  private userSource$ = new BehaviorSubject<User | null>(null);
+  user$ = this.userSource$.asObservable().pipe(tap(console.log));
 
   private storageEventListener(event: StorageEvent) {
     if (event.storageArea === localStorage) {
       if (event.key === 'logout-event') {
         this.stopTokenTimer();
-        this._user.next(null);
+        this.userSource$.next(null);
       }
+
       if (event.key === 'login-event') {
         this.stopTokenTimer();
-        this.http.get<LoginResult>(`${this.apiUrl}/user`).subscribe((x) => {
-          this._user.next(x);
-        });
+        this.http.get<LoginResult>(`${ environment.apiUrl }/api/account/user`)
+          .pipe(tap(x => this.userSource$.next(x)))
+          .subscribe();
       }
     }
   }
@@ -44,30 +52,40 @@ export class AuthService implements OnDestroy {
     window.removeEventListener('storage', this.storageEventListener.bind(this));
   }
 
-  login(username: string, password: string) {
+  login(login: Login) {
     return this.http
-      .post<LoginResult>(`${this.apiUrl}/login`, { username, password })
+      .post<LoginResult>(`${ environment.apiUrl }/account/login`, login)
       .pipe(
-        map((x) => {
-          this._user.next(x);
+        tap((x) => {
+          this.userSource$.next(x);
           this.setLocalStorage(x);
           this.startTokenTimer();
-          return x;
+        })
+      );
+  }
+
+  signup(user: SignUpUser) {
+    return this.http
+      .post<LoginResult>(`${ environment.apiUrl }/account/register`, user)
+      .pipe(
+        tap((x) => {
+          this.userSource$.next(x);
+          this.setLocalStorage(x);
+          this.startTokenTimer();
         })
       );
   }
 
   logout() {
-    this.http
-      .post<unknown>(`${this.apiUrl}/logout`, {})
+    return this.http
+      .post<void>(`${ environment.apiUrl }/account/logout`, {})
       .pipe(
         finalize(() => {
           this.clearLocalStorage();
-          this._user.next(null);
+          this.userSource$.next(null);
           this.stopTokenTimer();
         })
-      )
-      .subscribe();
+      );
   }
 
   refreshToken(): Observable<LoginResult | null> {
@@ -79,13 +97,12 @@ export class AuthService implements OnDestroy {
     }
 
     return this.http
-      .post<LoginResult>(`${this.apiUrl}/refresh-token`, { refreshToken })
+      .post<LoginResult>(`${ environment.apiUrl }/account/refresh-token`, { refreshToken })
       .pipe(
         tap((x) => {
-          this._user.next(x);
+          this.userSource$.next(x);
           this.setLocalStorage(x);
           this.startTokenTimer();
-          return x;
         })
       );
   }
@@ -118,7 +135,7 @@ export class AuthService implements OnDestroy {
     this.timer = of(true)
       .pipe(
         delay(timeout),
-        tap(() => this.refreshToken().subscribe())
+        tap(() => this.refreshToken().subscribe()),
       )
       .subscribe();
   }

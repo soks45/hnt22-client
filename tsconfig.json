@@ -1,7 +1,45 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@decorators/*": [
+        "app/decorators/*"
+      ],
+      "@guards/*": [
+        "app/guards/*"
+      ],
+      "@interceptors/*": [
+        "app/interceptors/*"
+      ],
+      "@mixins/*": [
+        "app/mixins/*"
+      ],
+      "@pages/*": [
+        "app/pages/*"
+      ],
+      "@services/*": [
+        "app/services/*"
+      ],
+      "@ui/*": [
+        "app/ui/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@environments/*": [
+        "environments/*"
+      ],
+      "@directives/*": [
+        "app/directives/*"
+      ],
+      "@validators/*": [
+        "app/validators/*"
+      ],
+      "@assets/*": [
+        "app/assets"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

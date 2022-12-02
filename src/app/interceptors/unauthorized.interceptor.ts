@@ -5,10 +5,10 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
+import { environment } from '@environments/environment';
+import { AuthService } from '@services/auth.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
@@ -27,6 +27,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
         if (!environment.production) {
           console.error(err);
         }
+
         const error = (err && err.error && err.error.message) || err.statusText;
         return throwError(error);
       })
