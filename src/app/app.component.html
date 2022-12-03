@@ -5,7 +5,9 @@
 </ngx-loading-bar>
 <div class="app">
   <hnt22-header [menuItems]="menuItems"></hnt22-header>
-  <router-outlet></router-outlet>
+  <div class="app-root__content">
+    <router-outlet></router-outlet>
+  </div>
   <hnt22-footer></hnt22-footer>
 </div>
 
