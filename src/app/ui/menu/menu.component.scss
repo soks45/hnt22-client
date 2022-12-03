@@ -1,0 +1,42 @@
+.menu {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__item {
+    text-align: center;
+    margin-right: 30px;
+  }
+  &__link {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 2;
+    color: #333;
+    text-decoration: none;
+    -webkit-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    transition: color 0.2s linear;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    border-bottom: none;
+  }
+  &__link:hover {
+    cursor: pointer;
+    color: #1E88E5;
+
+  }
+}
+:host {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

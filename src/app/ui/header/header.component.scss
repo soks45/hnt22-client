@@ -1,0 +1,23 @@
+.header {
+  background-color: #fff;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 1120px;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__logo {
+    height: 55px;
+  }
+}
+:host {
+  display: block;
+}

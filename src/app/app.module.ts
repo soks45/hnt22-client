@@ -10,6 +10,7 @@ import { appInitializer } from 'app/app-initializer';
 import { AuthService } from '@services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderModule } from './ui/header/header.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
+    HeaderModule
   ],
   providers: [
     {
