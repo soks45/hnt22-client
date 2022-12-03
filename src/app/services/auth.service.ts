@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { User, UserDetails } from '@models/user';
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, Subscription } from 'rxjs';
 import { tap, delay, finalize } from 'rxjs/operators';
 
 interface LoginResult extends User {
@@ -26,7 +26,8 @@ export interface Login {
 export class AuthService implements OnDestroy {
   private timer: Subscription | null = null;
   private userSource$ = new BehaviorSubject<User | null>(null);
-  user$ = this.userSource$.asObservable().pipe(tap(console.log));
+  user$ = this.userSource$.asObservable();
+  isAdmin$ = this.userSource$.asObservable().pipe(map((u) => u?.organization.organizationId === 1));
 
   private storageEventListener(event: StorageEvent) {
     if (event.storageArea === localStorage) {

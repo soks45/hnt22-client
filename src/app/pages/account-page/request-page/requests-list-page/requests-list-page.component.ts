@@ -10,8 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./requests-list-page.component.scss']
 })
 export class RequestsListPageComponent {
-  user$: Observable<User>;
   constructor(private auth: AuthService, private requests: RequestsService) {
-    this.user$ = this.auth.user$;
   }
 }

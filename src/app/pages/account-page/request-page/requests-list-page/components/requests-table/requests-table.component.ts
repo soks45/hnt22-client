@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { Request } from '@models/request';
+import { Organization } from '@models/organization';
+import { CarrierRequest, RequestStatus } from '@models/request';
+import { User } from '@models/user';
+import { Vehicle } from '@models/vehicle';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
@@ -11,17 +14,15 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const ELEMENT_DATA: CarrierRequest[] = [
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
+  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
 ];
 @Component({
   selector: 'hnt22-requests-table',
@@ -29,10 +30,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./requests-table.component.scss']
 })
 export class RequestsTableComponent {
-
+  isAdmin$: Observable<boolean>;
+  data$: Observable<CarrierRequest[]>;
   constructor(private auth: AuthService, private requests: RequestsService) {
+    this.isAdmin$ = this.auth.isAdmin$;
+    /*this.data$ = this.requests.getRequests();*/
+    this.data$ = of(ELEMENT_DATA);
   }
 
   displayedColumns: string[] = ['organisation', 'requestId', 'vehicleNumber', 'status', 'actions'];
-  dataSource = ELEMENT_DATA;
 }

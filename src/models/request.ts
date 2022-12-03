@@ -1,3 +1,7 @@
+import { Organization } from '@models/organization';
+import { User } from '@models/user';
+import { Vehicle } from '@models/vehicle';
+
 export enum RequestStatus {
   Send = 'send',
   Processing = 'processing',
@@ -5,10 +9,11 @@ export enum RequestStatus {
   Accepted = 'accepted'
 
 }
-export interface Request {
+export interface CarrierRequest {
   requestDate: Date;
   status: RequestStatus;
-  userId: number;
-  organizationId: number;
+  user: User;
+  organization: Organization;
   requestId: number;
+  vehicle: Vehicle;
 }
