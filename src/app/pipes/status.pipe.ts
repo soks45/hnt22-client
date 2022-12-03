@@ -9,16 +9,16 @@ export class StatusPipe implements PipeTransform {
   transform(value: RequestStatus): string {
     switch (value) {
       case RequestStatus.Accepted: {
-        return 'Принят';
+        return 'Принято';
       }
       case RequestStatus.Processing: {
         return 'На рассмотрении';
       }
       case RequestStatus.Rejected: {
-        return 'Отклонен';
+        return 'Отклонено';
       }
       case RequestStatus.Send: {
-        return 'Отправлен';
+        return 'Отправлено';
       }
     }
 

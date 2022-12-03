@@ -3,7 +3,7 @@
   <div mat-dialog-content>
     <form [formGroup]="formGroup">
       <mat-form-field>
-        <mat-label>Статус Заявления</mat-label>
+        <mat-label>Статус заявления</mat-label>
         <mat-select formControlName="status">
           <mat-option *ngFor="let status of statuses" [value]="status">{{status | status}}</mat-option>
         </mat-select>
@@ -16,8 +16,8 @@
     </form>
   </div>
   <div mat-dialog-actions class="actions">
-    <button mat-button mat-dialog-close>Close</button>
-    <button mat-button mat-dialog-close [disabled]="isLoading" (click)="onSubmit()">Submit</button>
+    <button mat-button mat-dialog-close>Закрыть</button>
+    <button mat-button mat-dialog-close [disabled]="isLoading" (click)="onSubmit()">Отправить</button>
   </div>
 </div>
 
