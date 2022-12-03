@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RequestsListPageRoutingModule } from './requests-list-page-routing.module';
-import { RequestsListPageComponent } from './requests-list-page.component';
+import { RequestsListPageRoutingModule } from 'app/pages/account-page/request-page/requests-list-page/requests-list-page-routing.module';
+import { RequestsListPageComponent } from 'app/pages/account-page/request-page/requests-list-page/requests-list-page.component';
 
 
 @NgModule({

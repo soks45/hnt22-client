@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@guards/auth.guard';
+import { GetRequestResolver } from 'app/resolvers/get-request.resolver';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('@pages/main-page/main-page.module')
       .then((m) => m.MainPageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('@pages/account-page/account-page.module')
+      .then((m) => m.AccountPageModule),
+    canActivate: [AuthGuard],
+    resolve: {
+      user: GetRequestResolver
+    }
   },
   {
     path: 'sign-in',
@@ -21,11 +32,6 @@ const routes: Routes = [
     path: 'qr-code',
     loadChildren: () => import('@pages/qr-code-page/qr-code-page.module')
       .then((m) => m.QrCodePageModule)
-  },
-  {
-    path: 'request',
-    loadChildren: () => import('@pages/request-page/request-page.module')
-      .then((m) => m.RequestPageModule)
   },
   {
     path: 'not-found',

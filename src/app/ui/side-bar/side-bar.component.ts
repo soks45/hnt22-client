@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { MenuItem } from '@models/menu-item';
 
 @Component({
-  selector: 'hnt22-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'hnt22-side-bar',
+  templateUrl: './side-bar.component.html',
+  styleUrls: ['./side-bar.component.scss']
 })
-export class HeaderComponent {
+export class SideBarComponent {
   @Input() menuItems: MenuItem[] = [];
 }

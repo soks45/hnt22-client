@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { MenuItem } from '@models/menu-item';
 import { AuthService } from '@services/auth.service';
 import { MessagesService } from '@services/messages.service';
-import { Item } from '@ui/header/components/menu/menu-item/menu-item.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { Item } from '@ui/header/components/menu/menu-item/menu-item.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  menuItems: Item[] = [
+  menuItems: MenuItem[] = [
     {
       name: 'Главная',
       ref: '/'

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Item } from '@ui/header/components/menu/menu-item/menu-item.component';
+import { MenuItem } from '@models/menu-item';
 
 @Component({
   selector: 'hnt22-menu',
@@ -7,5 +7,5 @@ import { Item } from '@ui/header/components/menu/menu-item/menu-item.component';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  @Input() menuItems: Item[] = [];
+  @Input() menuItems: MenuItem[] = [];
 }
