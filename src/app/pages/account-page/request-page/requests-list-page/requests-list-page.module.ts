@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  RequestsTableModule
+} from '@pages/account-page/request-page/requests-list-page/components/requests-table/requests-table.module';
 import { RequestsListPageRoutingModule } from 'app/pages/account-page/request-page/requests-list-page/requests-list-page-routing.module';
 import { RequestsListPageComponent } from 'app/pages/account-page/request-page/requests-list-page/requests-list-page.component';
 
@@ -10,7 +13,8 @@ import { RequestsListPageComponent } from 'app/pages/account-page/request-page/r
   ],
   imports: [
     CommonModule,
-    RequestsListPageRoutingModule
+    RequestsListPageRoutingModule,
+    RequestsTableModule
   ]
 })
 export class RequestsListPageModule { }

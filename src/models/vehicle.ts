@@ -31,5 +31,5 @@ export interface Vehicle {
   ownershipType?: OwnershipType
   vehicleId: number;
   date: string;
-  status: boolean;
+  sma: boolean;
 }

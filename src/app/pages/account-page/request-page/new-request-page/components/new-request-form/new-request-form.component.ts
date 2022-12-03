@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country, FuelType, OwnershipType, Vehicle } from '@models/vehicle';
 import { MessagesService } from '@services/messages.service';
+import { VehiclesService } from '@services/vehicles.service';
 import { Observable, of } from 'rxjs';
 
 interface NewRequest {
@@ -30,15 +31,16 @@ export class NewRequestFormComponent {
       ownershipType: OwnershipType.Leasing,
       vehicleId: 1,
       date: 'date',
-      status: true,
+      sma: true,
     }
-  ]);
+  ]); // TODO remove mock
   formGroup1: FormGroup;
   formGroup2: FormGroup;
   formGroup3: FormGroup;
   isLoading = false;
   constructor(
     private messages: MessagesService,
+    private vehiclesService: VehiclesService
   ) {
 
     this.formGroup1 = new FormGroup({
@@ -51,6 +53,7 @@ export class NewRequestFormComponent {
       model: new FormControl({ value: null, disabled: true}),
       subOrganization: new FormControl({ value: null, disabled: true}),
       serviceType: new FormControl({ value: null, disabled: true}),
+      sma: new FormControl({ value: null, disabled: true}),
     });
 
     this.formGroup3 = new FormGroup({
