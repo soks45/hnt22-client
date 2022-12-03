@@ -1,6 +1,8 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -25,7 +27,9 @@ import { FooterModule } from '@ui/footer/footer.module';
     LoadingBarRouterModule,
     LoadingBarModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     {
