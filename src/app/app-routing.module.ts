@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@guards/auth.guard';
 import { GetRequestResolver } from 'app/resolvers/get-request.resolver';
+import { GetUserResolver } from 'app/resolvers/get-user.resolver';
 
 const routes: Routes = [
   {
@@ -13,10 +14,10 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('@pages/account-page/account-page.module')
       .then((m) => m.AccountPageModule),
-/*    canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     resolve: {
-      user: GetRequestResolver
-    }*/
+      user: GetUserResolver
+    }
   },
   {
     path: 'sign-in',

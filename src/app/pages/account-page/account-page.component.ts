@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DestroyMixin } from '@mixins/destroy.mixin';
 import { BaseObject } from '@mixins/mixins';
@@ -12,12 +12,16 @@ import { Observable, takeUntil } from 'rxjs';
   templateUrl: './account-page.component.html',
   styleUrls: ['./account-page.component.scss']
 })
-export class AccountPageComponent extends DestroyMixin(BaseObject) {
+export class AccountPageComponent extends DestroyMixin(BaseObject) implements OnInit {
   user: User;
   constructor(private activateRoute: ActivatedRoute) {
     super();
 
     this.user = this.activateRoute.snapshot.data['user'];
+  }
+
+  ngOnInit(): void {
+    console.log(this.user);
   }
 
 
