@@ -1,0 +1,13 @@
+.menu {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+:host {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

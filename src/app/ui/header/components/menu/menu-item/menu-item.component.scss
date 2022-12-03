@@ -1,14 +1,7 @@
-.menu {
-  font-family: 'Roboto', sans-serif;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.item {
+  text-align: center;
+  margin-right: 30px;
 
-  &__item {
-    text-align: center;
-    margin-right: 30px;
-  }
   &__link {
     box-sizing: border-box;
     padding: 5px 10px;
@@ -28,15 +21,9 @@
     position: relative;
     border-bottom: none;
   }
+
   &__link:hover {
     cursor: pointer;
     color: #1E88E5;
-
   }
-}
-:host {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 }

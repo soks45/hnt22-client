@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
-import { MenuModule } from '@ui/menu/menu.module';
+import { MenuModule } from '@ui/header/components/menu/menu.module';
 
 @NgModule({
   declarations: [
