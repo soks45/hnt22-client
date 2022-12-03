@@ -13,6 +13,11 @@ const routes: Routes = [
       .then((m) => m.QrCodePageModule)
   },
   {
+    path: 'request',
+    loadChildren: () => import('@pages/request-page/request-page.module')
+      .then((m) => m.RequestPageModule)
+  },
+  {
     path: 'not-found',
     loadChildren: () => import('@pages/not-found-page/not-found-page.module')
       .then((m) => m.NotFoundPageModule)

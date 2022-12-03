@@ -1,9 +1,7 @@
 <p>qr-code-page works!</p>
 <qrcode [qrdata]="'http://localhost:4200/check-qr-code/dlaiwdjklawj'"
-        [width]="256"
         [errorCorrectionLevel]="'M'"
         [elementType]="'url'"
-        (qrCodeURL)="qrCodeURL($event)"
         [version]="4"
 >
 </qrcode>
