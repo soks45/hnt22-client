@@ -4,7 +4,9 @@ mat-form-field {
   font-size: 14px !important;
   margin-top: 10px !important;
 }
-
+mat-label {
+  font-size: 14px;
+}
 .form {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
