@@ -13,10 +13,10 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('@pages/account-page/account-page.module')
       .then((m) => m.AccountPageModule),
-    canActivate: [AuthGuard],
+/*    canActivate: [AuthGuard],
     resolve: {
       user: GetRequestResolver
-    }
+    }*/
   },
   {
     path: 'sign-in',
