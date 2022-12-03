@@ -5,13 +5,14 @@ import { BaseObject } from '@mixins/mixins';
 import { CarrierRequest } from '@models/request';
 
 import {
-  UpdateRequestStatusDialogComponent, UpdateRequestStatusDialogData
+  UpdateRequestStatusDialogComponent,
+  UpdateRequestStatusDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.component';
-import { DeleteConfirmationStatusDialogComponent } from './components/delete-confirmation-status-dialog/delete-confirmation-status-dialog.component';
+import { MessagesService } from '@services/messages.service';
 import { QrCodeComponent } from '@ui/qr-code/qr-code.component';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
-import { Observable, of, takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -22,7 +23,12 @@ import { tap } from 'rxjs/operators';
 export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   isAdmin$: Observable<boolean>;
   data$: Observable<CarrierRequest[]>;
-  constructor(private auth: AuthService, private requests: RequestsService, private dialog: MatDialog) {
+  constructor(
+    private auth: AuthService,
+    private requests: RequestsService,
+    private dialog: MatDialog,
+    private messages: MessagesService
+  ) {
     super();
 
     this.isAdmin$ = this.auth.isAdmin$;
@@ -41,19 +47,13 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
     })
   }
   deleteReq(request: CarrierRequest): void {
-    this.dialog.open(DeleteConfirmationStatusDialogComponent, {
-      closeOnNavigation: true,
-      backdropClass: 'update-request-status-dialog-backdrop',
-      panelClass: 'update-request-status-dialog-panel',
-      data: <UpdateRequestStatusDialogData> { request }
-    })
+    this.messages.info('Функция недоступна в этой версии', 'Ок');
   }
   showCode(request: CarrierRequest): void {
     this.dialog.open(QrCodeComponent, {
       closeOnNavigation: true,
-      backdropClass: 'update-request-status-dialog-backdrop',
-      panelClass: 'update-request-status-dialog-panel',
-      data: <UpdateRequestStatusDialogData> { request }
+      backdropClass: 'show-qr-dialog-backdrop',
+      panelClass: 'show-qr-dialog-panel',
     })
   }
 }
