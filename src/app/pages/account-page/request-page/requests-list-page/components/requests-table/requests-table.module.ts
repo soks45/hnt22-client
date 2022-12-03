@@ -7,7 +7,7 @@ import { PipesModule } from 'app/pipes/pipes.module';
 import { RequestsTableComponent } from './requests-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-
+import { QrCodeModule } from '@ui/qr-code/qr-code.module';
 @NgModule({
   declarations: [
     RequestsTableComponent
@@ -17,7 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatIconModule,
     UpdateRequestStatusDialogModule,
-    PipesModule
+    PipesModule,
+    QrCodeModule
   ],
   exports: [
     RequestsTableComponent

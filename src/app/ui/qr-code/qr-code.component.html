@@ -1,1 +1,12 @@
-<p>qr-code works!</p>
+<div class="qr-code">
+  <qrcode [qrdata]="'http://localhost:4200/check-qr-code/dlaiwdjklawj'"
+        [errorCorrectionLevel]="'M'"
+        [elementType]="'url'"
+        [version]="4"
+        [width]="300"
+        #qr
+  >
+  </qrcode>
+  <button class="qr-code__btn" (click)="saveAsImage(qr)">Скачать</button>
+  <a class="qr-code__btn" >Скопировать ссылку </a>
+</div>
