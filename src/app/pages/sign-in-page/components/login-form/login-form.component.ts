@@ -3,10 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ControlsOf, FormMixin } from '@mixins/form.mixin';
 import { BaseObject, Constructor } from '@mixins/mixins';
-import { User } from '@models/user';
 import { AuthService, Login } from '@services/auth.service';
 import { MessagesService } from '@services/messages.service';
-import { catchError, finalize, tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'hnt22-login-form',
@@ -48,17 +47,12 @@ export class LoginFormComponent extends FormMixin<Constructor, Login>(BaseObject
       .pipe(
         tap((v) => {
           this.messages.success(`Доброй день, ${v.firstName} ${v.lastName}!`);
-          const redirectUrl = this.getDefaultRoute(v)
-          this.router.navigate([redirectUrl]);
+          this.router.navigate(['/account']);
         }),
         finalize(() => (this.isLoading = false))
       )
       .subscribe({
         error: () => this.messages.error('Неверный логин или пароль')
       });
-  }
-
-  private getDefaultRoute(user: User): string {
-    return '';
   }
 }

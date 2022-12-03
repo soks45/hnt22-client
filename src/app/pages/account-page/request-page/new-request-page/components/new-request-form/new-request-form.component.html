@@ -1,0 +1,11 @@
+<form class="new-request-form" [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>Выберите ТС</mat-label>
+    <mat-select formControlName="vehicleId">
+      <mat-option [value]="123">123</mat-option>
+    </mat-select>
+    <mat-error *ngIf="formGroup.controls['vehicleId'].errors &&
+               formGroup.controls['vehicleId'].errors['required']"
+               class="form__error"></mat-error>
+  </mat-form-field>
+</form>
