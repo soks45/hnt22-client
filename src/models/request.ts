@@ -8,8 +8,6 @@ export enum RequestStatus {
 export interface Request {
   requestDate: Date;
   status: RequestStatus;
-  startDate: Date;
-  endDate: Date;
   userId: number;
   organizationId: number;
   requestId: number;

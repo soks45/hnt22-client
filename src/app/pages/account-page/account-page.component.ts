@@ -15,7 +15,7 @@ export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(Ba
   }
 
   ngOnInit(): void {
-    console.log(this.user);
+
   }
 
   get isAdmin(): boolean {
