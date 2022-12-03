@@ -29,7 +29,7 @@ import { FooterModule } from '@ui/footer/footer.module';
     HeaderModule,
     FooterModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     {

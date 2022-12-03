@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MenuItemComponent } from 'app/ui/header/components/menu/menu-item/menu-item.component';
 
 
@@ -9,7 +10,8 @@ import { MenuItemComponent } from 'app/ui/header/components/menu/menu-item/menu-
     MenuItemComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   exports: [
     MenuItemComponent
