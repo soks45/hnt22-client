@@ -1,6 +1,5 @@
 .item {
   text-align: center;
-  margin-right: 30px;
 
   &__link {
     box-sizing: border-box;
@@ -10,13 +9,8 @@
     line-height: 2;
     color: #333;
     text-decoration: none;
-    -webkit-transition: color 0.2s linear;
-    -o-transition: color 0.2s linear;
     transition: color 0.2s linear;
     height: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     position: relative;
     border-bottom: none;
@@ -26,4 +20,10 @@
     cursor: pointer;
     color: #1E88E5;
   }
+}
+:host {
+  margin-right: 40px;
+}
+:host:last-of-type{
+  margin-right: 0;
 }
