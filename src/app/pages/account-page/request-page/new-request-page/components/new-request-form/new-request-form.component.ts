@@ -23,13 +23,12 @@ export class NewRequestFormComponent extends FormMixin<Constructor, NewRequest>(
   ) {
     super();
 
-    // @ts-ignore
-    this.formGroup = this.formBuilder.group({
+    this.formGroup = (this.formBuilder.group({
       vehicleId: new FormControl(null, {
         initialValueIsDefault: true,
         validators: [Validators.required]
       }),
-    });
+    }) as unknown as FormGroup<ControlsOf<NewRequest>>);
   }
 
   onSubmit(): void {
