@@ -11,6 +11,7 @@ import { AuthService } from '@services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './ui/header/header.module';
+import { FooterModule } from './ui/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderModule } from './ui/header/header.module';
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-    HeaderModule
+    HeaderModule,
+    FooterModule
   ],
   providers: [
     {

@@ -1,0 +1,20 @@
+.footer {
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  width: 1120px;
+  min-width: 320px;
+  border-top: 1px solid #E8EAF0;
+  margin-top: 35px;
+  padding-top: 17px;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: flex-start;
+
+  &__copyright {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  margin: 0;
+  }
+}
