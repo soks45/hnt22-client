@@ -1,22 +1,25 @@
 <form [formGroup]="formGroup" class="form login-form" (submit)="onSubmit()">
   <h2 class="form__title login-form__title">Вход</h2>
 
-  <div class="form__field">
-    <input formControlName="login"
+  <mat-form-field class="form__field">
+    <mat-label>Логин</mat-label>
+    <input matInput
+           formControlName="login"
            type="text"
-           class="form__input"
-           placeholder="Логин"/>
+           class="form__input"/>
 
-    <span *ngIf="formGroup.controls['login'].errors &&
-          formGroup.controls['login'].errors['required'] &&
-          formGroup.controls['login'].touched"
-          class="form__error"
+    <mat-error *ngIf="formGroup.controls['login'].errors &&
+               formGroup.controls['login'].errors['required'] &&
+               formGroup.controls['login'].touched"
+               class="form__error"
     >
       Это поле обязательно
-    </span>
-  </div>
+    </mat-error>
+  </mat-form-field>
 
   <mat-form-field class="form__field">
+    <mat-label>Пароль</mat-label>
+
     <input matInput
            formControlName="password"
            type="text"
@@ -35,6 +38,7 @@
   <button class="form__submit-btn login-form__btn"
           type="submit"
           (submit)="onSubmit()"
+          [disabled]="isLoading"
   >
     Войти
   </button>

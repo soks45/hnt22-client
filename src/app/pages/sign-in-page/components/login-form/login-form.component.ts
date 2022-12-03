@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ControlsOf, FormMixin } from '@mixins/form.mixin';
 import { BaseObject, Constructor } from '@mixins/mixins';
+import { User } from '@models/user';
 import { AuthService, Login } from '@services/auth.service';
 import { MessagesService } from '@services/messages.service';
+import { catchError, finalize, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'hnt22-login-form',
@@ -12,10 +15,12 @@ import { MessagesService } from '@services/messages.service';
 })
 export class LoginFormComponent extends FormMixin<Constructor, Login>(BaseObject) {
   formGroup: FormGroup<ControlsOf<Login>>;
+  isLoading = false;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private messages: MessagesService,
+    private router: Router
   ) {
     super();
 
@@ -35,5 +40,25 @@ export class LoginFormComponent extends FormMixin<Constructor, Login>(BaseObject
     if (!this.checkForm()) {
       return;
     }
+
+    this.isLoading = true;
+
+    this.authService
+      .login(this.formGroup.value as Login)
+      .pipe(
+        tap((v) => {
+          this.messages.success(`Доброй день, ${v.firstName} ${v.lastName}!`);
+          const redirectUrl = this.getDefaultRoute(v)
+          this.router.navigate([redirectUrl]);
+        }),
+        finalize(() => (this.isLoading = false))
+      )
+      .subscribe({
+        error: () => this.messages.error('Неверный логин или пароль')
+      });
+  }
+
+  private getDefaultRoute(user: User): string {
+    return '';
   }
 }
