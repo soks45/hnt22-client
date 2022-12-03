@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./qr-code-page.component.scss']
 })
 export class QrCodePageComponent {
-  constructor() {
-  }
 }

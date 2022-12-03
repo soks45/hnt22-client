@@ -12,8 +12,6 @@ import { MenuItem } from '@models/menu-item';
 export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(BaseObject)) implements OnInit {
   constructor() {
     super();
-
-    this.user = this.activateRoute.snapshot.data['user'];
   }
 
   ngOnInit(): void {

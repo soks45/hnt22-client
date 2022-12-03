@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RequestPageComponent } from '@pages/account-page/request-page/request-page.component';
 import { GetRequestResolver } from 'app/resolvers/get-request.resolver';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'new',
-    pathMatch: 'prefix'
-  },
+
   {
     path: 'new',
     loadChildren: () => import('@pages/account-page/request-page/new-request-page/new-request-page.module')
@@ -20,11 +15,9 @@ const routes: Routes = [
       .then((m) => m.RequestsListPageModule)
   },
   {
-    path: ':id',
-    component: RequestPageComponent,
-    resolve: {
-      request: GetRequestResolver
-    }
+    path: '**',
+    redirectTo: 'new',
+    pathMatch: 'prefix'
   },
 ];
 
