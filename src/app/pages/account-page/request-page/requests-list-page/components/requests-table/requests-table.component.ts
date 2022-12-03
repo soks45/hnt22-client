@@ -1,45 +1,31 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Organization } from '@models/organization';
-import { CarrierRequest, RequestStatus } from '@models/request';
-import { User } from '@models/user';
-import { Vehicle } from '@models/vehicle';
+import { DestroyMixin } from '@mixins/destroy.mixin';
+import { BaseObject } from '@mixins/mixins';
+import { CarrierRequest } from '@models/request';
+
 import {
   UpdateRequestStatusDialogComponent, UpdateRequestStatusDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.component';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, takeUntil } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: CarrierRequest[] = [
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-  { organization: { name: 'dawdwa' } as Organization, requestId: 1, status: RequestStatus.Accepted, vehicle: { vehicleNumber: 'a123vs' } as Vehicle } as CarrierRequest,
-];
 @Component({
   selector: 'hnt22-requests-table',
   templateUrl: './requests-table.component.html',
   styleUrls: ['./requests-table.component.scss']
 })
-export class RequestsTableComponent {
+export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   isAdmin$: Observable<boolean>;
   data$: Observable<CarrierRequest[]>;
   constructor(private auth: AuthService, private requests: RequestsService, private dialog: MatDialog) {
+    super();
+
     this.isAdmin$ = this.auth.isAdmin$;
-    /*this.data$ = this.requests.getRequests();*/
-    this.data$ = of(ELEMENT_DATA);
+    this.data$ = this.requests.getRequests();
+    this.requests.requestChanges$.pipe(takeUntil(this.destroyed$), tap(() => this.data$ = this.requests.getRequests())).subscribe();
   }
 
   displayedColumns: string[] = ['organisation', 'requestId', 'vehicleNumber', 'status', 'actions'];

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   UpdateRequestStatusDialogModule
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.module';
+import { PipesModule } from 'app/pipes/pipes.module';
 import { RequestsTableComponent } from './requests-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatTableModule,
     MatIconModule,
-    UpdateRequestStatusDialogModule
+    UpdateRequestStatusDialogModule,
+    PipesModule
   ],
   exports: [
     RequestsTableComponent

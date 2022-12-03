@@ -8,11 +8,16 @@
           <mat-option *ngFor="let status of statuses" [value]="status">{{status | status}}</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Комментарий</mat-label>
+        <input type="textarea" matInput formControlName="comment">
+      </mat-form-field>
     </form>
   </div>
   <div mat-dialog-actions class="actions">
     <button mat-button mat-dialog-close>Close</button>
-    <button mat-button mat-dialog-close [disabled]="isLoading">Submit</button>
+    <button mat-button mat-dialog-close [disabled]="isLoading" (click)="onSubmit()">Submit</button>
   </div>
 </div>
 
