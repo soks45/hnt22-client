@@ -19,7 +19,7 @@ export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(Ba
   }
 
   get isAdmin(): boolean {
-    return this.user.isAdmin;
+    return this.user.organization.organizationId === 1;
   }
   readonly defaultUserTabs: MenuItem[] = [
     {

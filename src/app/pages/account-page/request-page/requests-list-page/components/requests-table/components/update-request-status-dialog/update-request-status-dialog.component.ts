@@ -1,6 +1,6 @@
 import { F } from '@angular/cdk/keycodes';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BaseObject } from '@mixins/mixins';
 import { SimpleFormMixin } from '@mixins/simple-form.mixin';
@@ -31,7 +31,8 @@ export class UpdateRequestStatusDialogComponent extends SimpleFormMixin(BaseObje
     super();
 
     this.formGroup = new FormGroup({
-      status: new FormControl(null),
+      status: new FormControl(null, [Validators.required]),
+      comment: new FormControl(null, []),
     });
   }
 
@@ -40,12 +41,16 @@ export class UpdateRequestStatusDialogComponent extends SimpleFormMixin(BaseObje
   }
 
   onSubmit(): void {
-    if (this.checkForm()) {
+    if (!this.checkForm()) {
       return;
     }
 
     this.isLoading = true;
-    this.data.request.status = this.formGroup.value.status;
+
+    this.data.request = {
+      ...this.data.request,
+      ...this.formGroup.value
+    }
 
     this.requestsService.updateRequest(this.data.request).pipe(
       finalize(() => {

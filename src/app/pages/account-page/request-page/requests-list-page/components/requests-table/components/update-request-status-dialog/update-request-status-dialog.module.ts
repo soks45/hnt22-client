@@ -6,15 +6,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { PipesModule } from 'app/pipes/pipes.module';
 import { UpdateRequestStatusDialogComponent } from './update-request-status-dialog.component';
-import { StatusPipe } from './status.pipe';
 
 
 
 @NgModule({
   declarations: [
     UpdateRequestStatusDialogComponent,
-    StatusPipe
   ],
   imports: [
     CommonModule,
@@ -23,7 +22,8 @@ import { StatusPipe } from './status.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    PipesModule
   ],
   exports: [
     UpdateRequestStatusDialogComponent

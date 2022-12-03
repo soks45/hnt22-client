@@ -3,8 +3,8 @@ import { User } from '@models/user';
 import { Vehicle } from '@models/vehicle';
 
 export enum RequestStatus {
-  Send = 'send',
-  Processing = 'processing',
+  Send = 'Send',
+  Processing = 'precessing',
   Rejected = 'rejected',
   Accepted = 'accepted'
 }
@@ -22,4 +22,5 @@ export interface CarrierRequest {
   organization: Organization;
   requestId: number;
   vehicle: Vehicle;
+  comment?: string;
 }
