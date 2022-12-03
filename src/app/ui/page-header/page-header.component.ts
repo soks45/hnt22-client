@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'hnt22-page-header',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent {
-
+  @Input() title: string = '';
 }
