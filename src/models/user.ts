@@ -2,8 +2,10 @@ export interface User extends UserDetails {
   userId: number;
 }
 export interface UserDetails {
-  username: string;
+  login: string;
   firstName: string;
   lastName: string;
   avatarUrl: string;
+  organizationId: number;
+  jobTitle: string;
 }
