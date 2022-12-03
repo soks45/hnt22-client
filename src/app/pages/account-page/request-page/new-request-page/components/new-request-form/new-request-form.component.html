@@ -1,20 +1,22 @@
-<mat-stepper linear #stepper>
+<mat-stepper [orientation]="'vertical'" #stepper>
   <mat-step [stepControl]="formGroup1" [editable]="true">
     <form [formGroup]="formGroup1">
       <ng-template matStepLabel>Выберите транспортное средство</ng-template>
+
       <mat-form-field>
         <mat-label>Выберите ТС</mat-label>
-        <mat-select formControlName="vehicleId">
-          <mat-option [value]="123">123</mat-option>
+        <mat-select formControlName="vehicle" (valueChange)="setUpForm($event)">
+          <mat-option *ngFor="let vehicle of (vehicles$ | async)" [value]="vehicle">{{ vehicle.vehicleNumber }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="formGroup1.controls['vehicleId'].errors &&
-               formGroup1.controls['vehicleId'].errors['required']"
+        <mat-error *ngIf="formGroup1.controls['vehicle'].errors &&
+               formGroup1.controls['vehicle'].errors['required']"
                    class="form__error">
           Это поле обязательно
         </mat-error>
       </mat-form-field>
+
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>Продолжить</button>
       </div>
     </form>
   </mat-step>
@@ -22,8 +24,30 @@
     <form [formGroup]="formGroup2">
       <ng-template matStepLabel>Данные заявления</ng-template>
 
+      <mat-form-field>
+        <mat-label>Поставщик ТУ</mat-label>
+        <input matInput type="text" formControlName="organization" >
+      </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Гос. Номер</mat-label>
+        <input matInput type="text" formControlName="vehicleNumber" >
+      </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Модель</mat-label>
+        <input matInput type="text" formControlName="model" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Субподряд</mat-label>
+        <input matInput type="text" formControlName="subOrganization" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Вид транспортной услуги</mat-label>
+        <input matInput type="text" formControlName="serviceType" >
+      </mat-form-field>
 
       <div>
         <button mat-button matStepperPrevious>Назад</button>
@@ -32,72 +56,37 @@
     </form>
   </mat-step>
   <mat-step [stepControl]="formGroup3" [editable]="true">
-    <form [formGroup]="formGroup2">
+    <form [formGroup]="formGroup3">
       <ng-template matStepLabel>Данные заявления</ng-template>
 
       <mat-form-field>
-        <mat-label>Гос. Номер</mat-label>
-        <input matInput type="text" formControlName="vehicleNumber">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Модель ТС</mat-label>
-        <input matInput type="text" formControlName="model">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Год Выпуска</mat-label>
-        <input matInput type="date" formControlName="date">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Код ТС</mat-label>
-        <input matInput type="text" formControlName="code">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Вид транспортной услуги</mat-label>
-        <input matInput type="text" formControlName="serviceType">
-      </mat-form-field>
-
-      <mat-form-field>
         <mat-label>Вид ТС</mat-label>
-        <input matInput type="text" formControlName="vehicleTypeExt">
+        <input matInput type="text" formControlName="vehicleTypeExt" >
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Тип ТС</mat-label>
-        <input matInput type="text" formControlName="vehicleType">
+        <input matInput type="text" formControlName="vehicleType" >
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Значение характеристики типа ТС</mat-label>
-        <input matInput type="text" formControlName="vehicleChars">
+        <input matInput type="text" formControlName="vehicleTypeExt" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Тип топлива</mat-label>
+        <input matInput type="text" formControlName="fuelType" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Год выпуска</mat-label>
+        <input matInput type="text" formControlName="date" >
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Страна производства</mat-label>
-        <input matInput type="text" formControlName="country">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Вид топлива</mat-label>
-        <input matInput type="text" formControlName="fuelType">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Поставщик ТУ</mat-label>
-        <input matInput type="text" formControlName="ownershipType">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Субподряд</mat-label>
-        <input matInput type="text" formControlName="subOrganization">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Основание владения</mat-label>
-        <input matInput type="text" formControlName="subOrganization">
+        <input matInput type="text" formControlName="country" >
       </mat-form-field>
 
       <div>

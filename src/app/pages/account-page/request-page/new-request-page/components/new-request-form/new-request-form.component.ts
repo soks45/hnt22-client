@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Country, FuelType, OwnershipType, Vehicle } from '@models/vehicle';
 import { MessagesService } from '@services/messages.service';
+import { Observable, of } from 'rxjs';
 
 interface NewRequest {
   vehicleId: number;
@@ -12,6 +14,25 @@ interface NewRequest {
   styleUrls: ['./new-request-form.component.scss']
 })
 export class NewRequestFormComponent {
+  vehicles$: Observable<Vehicle[]> = of([
+    {
+      organization: 'organization',
+      vehicleNumber: 'vehicleNumber',
+      model: 'model',
+      code: 'code',
+      serviceType: 'serviceType',
+      vehicleType: 'vehicleType',
+      vehicleTypeExt: 'vehicleTypeExt',
+      vehicleChars: 'vehicleChars',
+      country: Country.Russia,
+      fuelType: FuelType.Diesel,
+      subOrganization: true,
+      ownershipType: OwnershipType.Leasing,
+      vehicleId: 1,
+      date: 'date',
+      status: true,
+    }
+  ]);
   formGroup1: FormGroup;
   formGroup2: FormGroup;
   formGroup3: FormGroup;
@@ -21,24 +42,24 @@ export class NewRequestFormComponent {
   ) {
 
     this.formGroup1 = new FormGroup({
-      vehicleId: new FormControl(null, { validators: [Validators.required] }),
+      vehicle: new FormControl(null, { validators: [Validators.required] }),
     });
 
     this.formGroup2 = new FormGroup({
-      organization: new FormControl(null),
-      vehicleNumber: new FormControl(null),
-      subOrganization: new FormControl(null),
-      serviceType: new FormControl(null),
-      ownershipType: new FormControl(null),
+      organization: new FormControl({ value: null, disabled: true}),
+      vehicleNumber: new FormControl({ value: null, disabled: true}),
+      model: new FormControl({ value: null, disabled: true}),
+      subOrganization: new FormControl({ value: null, disabled: true}),
+      serviceType: new FormControl({ value: null, disabled: true}),
     });
 
     this.formGroup3 = new FormGroup({
-      model: new FormControl(null),
-      vehicleType: new FormControl(null),
-      vehicleTypeExt: new FormControl(null),
-      vehicleChars: new FormControl(null),
-      country: new FormControl(null),
-      fuelType: new FormControl(null),
+      vehicleType: new FormControl({ value: null, disabled: true}),
+      vehicleTypeExt: new FormControl({ value: null, disabled: true}),
+      vehicleChars: new FormControl({ value: null, disabled: true}),
+      date: new FormControl({ value: null, disabled: true}),
+      country: new FormControl({ value: null, disabled: true}),
+      fuelType: new FormControl({ value: null, disabled: true}),
     });
   }
 
@@ -51,5 +72,10 @@ export class NewRequestFormComponent {
 
   onSubmit() {
 
+  }
+
+  setUpForm(vehicle: Vehicle) {
+    this.formGroup2.patchValue(vehicle);
+    this.formGroup3.patchValue(vehicle);
   }
 }

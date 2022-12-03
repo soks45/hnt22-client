@@ -21,15 +21,15 @@ export interface Vehicle {
   vehicleNumber: string;
   model: string;
   code: string;
-  vehicleType: string;
   serviceType: string;
+  vehicleType: string;
   vehicleTypeExt: string;
   vehicleChars: string;
   country: Country;
   fuelType: FuelType;
   subOrganization: boolean;
-  ownershipType: OwnershipType
+  ownershipType?: OwnershipType
   vehicleId: number;
-  date: Date;
+  date: string;
   status: boolean;
 }
