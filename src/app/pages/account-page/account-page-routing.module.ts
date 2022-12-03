@@ -5,12 +5,19 @@ import { AccountPageComponent } from '@pages/account-page/account-page.component
 const routes: Routes = [
   {
     path: '',
-    component: AccountPageComponent
-  },
-  {
-    path: 'request',
-    loadChildren: () => import('@pages/account-page/request-page/request-page.module')
-      .then((m) => m.RequestPageModule)
+    component: AccountPageComponent,
+    children: [
+      {
+        path: 'request',
+        loadChildren: () => import('@pages/account-page/request-page/request-page.module')
+          .then((m) => m.RequestPageModule)
+      },
+      {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'prefix'
+      }
+    ]
   },
 ];
 
