@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('@pages/account-page/request-page/request-page.module')
       .then((m) => m.RequestPageModule)
   },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'prefix'
+  }
 ];
 
 @NgModule({

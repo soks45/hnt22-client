@@ -19,6 +19,7 @@ export class GetUserResolver implements Resolve<User> {
       lastName: 'lastName',
       organizationId: 2,
       jobTitle: 'jobTitle',
+      isAdmin: false
     });
   }
 }

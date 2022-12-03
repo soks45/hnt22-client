@@ -1,5 +1,6 @@
 export interface User extends UserDetails {
   userId: number;
+  isAdmin: boolean;
 }
 export interface UserDetails {
   login: string;

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@guards/auth.guard';
-import { GetRequestResolver } from 'app/resolvers/get-request.resolver';
 import { GetUserResolver } from 'app/resolvers/get-user.resolver';
 
 const routes: Routes = [
