@@ -17,17 +17,19 @@ export enum OwnershipType {
   Unknown = 'unknown'
 }
 export interface Vehicle {
-  organizationId: number;
+  organization: string;
   vehicleNumber: string;
   model: string;
   code: string;
-  vehicleTypeId: number;
-  serviceTypeId: number;
-  vehicleTypeExtId: number;
+  vehicleType: string;
+  serviceType: string;
+  vehicleTypeExt: string;
   vehicleChars: string;
   country: Country;
   fuelType: FuelType;
   subOrganization: boolean;
   ownershipType: OwnershipType
   vehicleId: number;
+  date: Date;
+  status: boolean;
 }

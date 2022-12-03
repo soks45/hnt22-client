@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlsOf, FormMixin } from '@mixins/form.mixin';
-import { BaseObject, Constructor } from '@mixins/mixins';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessagesService } from '@services/messages.service';
 
 interface NewRequest {
@@ -13,27 +11,45 @@ interface NewRequest {
   templateUrl: './new-request-form.component.html',
   styleUrls: ['./new-request-form.component.scss']
 })
-export class NewRequestFormComponent extends FormMixin<Constructor, NewRequest>(BaseObject) {
-  formGroup: FormGroup<ControlsOf<NewRequest>>;
+export class NewRequestFormComponent {
+  formGroup1: FormGroup;
+  formGroup2: FormGroup;
+  formGroup3: FormGroup;
   isLoading = false;
   constructor(
-    private formBuilder: FormBuilder,
-
     private messages: MessagesService,
   ) {
-    super();
 
-    this.formGroup = (this.formBuilder.group({
-      vehicleId: new FormControl(null, {
-        initialValueIsDefault: true,
-        validators: [Validators.required]
-      }),
-    }) as unknown as FormGroup<ControlsOf<NewRequest>>);
+    this.formGroup1 = new FormGroup({
+      vehicleId: new FormControl(null, { validators: [Validators.required] }),
+    });
+
+    this.formGroup2 = new FormGroup({
+      organization: new FormControl(null),
+      vehicleNumber: new FormControl(null),
+      subOrganization: new FormControl(null),
+      serviceType: new FormControl(null),
+      ownershipType: new FormControl(null),
+    });
+
+    this.formGroup3 = new FormGroup({
+      model: new FormControl(null),
+      vehicleType: new FormControl(null),
+      vehicleTypeExt: new FormControl(null),
+      vehicleChars: new FormControl(null),
+      country: new FormControl(null),
+      fuelType: new FormControl(null),
+    });
   }
 
-  onSubmit(): void {
-    if (!this.checkForm()) {
-      return;
-    }
+  private checkForm(fg: FormGroup): boolean {
+    fg.updateValueAndValidity();
+    fg.markAsTouched();
+
+    return fg.valid;
+  }
+
+  onSubmit() {
+
   }
 }

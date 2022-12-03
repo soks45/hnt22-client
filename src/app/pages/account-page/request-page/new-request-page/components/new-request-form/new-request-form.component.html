@@ -1,13 +1,118 @@
-<form class="new-request-form" [formGroup]="formGroup">
-  <mat-form-field>
-    <mat-label>Выберите ТС</mat-label>
-    <mat-select formControlName="vehicleId">
-      <mat-option [value]="123">123</mat-option>
-    </mat-select>
-    <mat-error *ngIf="formGroup.controls['vehicleId'].errors &&
-               formGroup.controls['vehicleId'].errors['required']"
-               class="form__error">
-      Это поле обязательно
-    </mat-error>
-  </mat-form-field>
-</form>
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="formGroup1" [editable]="true">
+    <form [formGroup]="formGroup1">
+      <ng-template matStepLabel>Выберите транспортное средство</ng-template>
+      <mat-form-field>
+        <mat-label>Выберите ТС</mat-label>
+        <mat-select formControlName="vehicleId">
+          <mat-option [value]="123">123</mat-option>
+        </mat-select>
+        <mat-error *ngIf="formGroup1.controls['vehicleId'].errors &&
+               formGroup1.controls['vehicleId'].errors['required']"
+                   class="form__error">
+          Это поле обязательно
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="formGroup2" [editable]="true">
+    <form [formGroup]="formGroup2">
+      <ng-template matStepLabel>Данные заявления</ng-template>
+
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button matStepperNext>Продолжить</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="formGroup3" [editable]="true">
+    <form [formGroup]="formGroup2">
+      <ng-template matStepLabel>Данные заявления</ng-template>
+
+      <mat-form-field>
+        <mat-label>Гос. Номер</mat-label>
+        <input matInput type="text" formControlName="vehicleNumber">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Модель ТС</mat-label>
+        <input matInput type="text" formControlName="model">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Год Выпуска</mat-label>
+        <input matInput type="date" formControlName="date">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Код ТС</mat-label>
+        <input matInput type="text" formControlName="code">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Вид транспортной услуги</mat-label>
+        <input matInput type="text" formControlName="serviceType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Вид ТС</mat-label>
+        <input matInput type="text" formControlName="vehicleTypeExt">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Тип ТС</mat-label>
+        <input matInput type="text" formControlName="vehicleType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Значение характеристики типа ТС</mat-label>
+        <input matInput type="text" formControlName="vehicleChars">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Страна производства</mat-label>
+        <input matInput type="text" formControlName="country">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Вид топлива</mat-label>
+        <input matInput type="text" formControlName="fuelType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Поставщик ТУ</mat-label>
+        <input matInput type="text" formControlName="ownershipType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Субподряд</mat-label>
+        <input matInput type="text" formControlName="subOrganization">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Основание владения</mat-label>
+        <input matInput type="text" formControlName="subOrganization">
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button matStepperNext>Продолжить</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Отправить</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Назад</button>
+      <button mat-button (click)="stepper.reset()">Сбросить</button>
+      <button mat-button (click)="onSubmit()" class="form__submit-btn">Отправить</button>
+    </div>
+  </mat-step>
+</mat-stepper>
