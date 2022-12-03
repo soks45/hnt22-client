@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SignUpPageRoutingModule } from './sign-up-page-routing.module';
 import { SignUpPageComponent } from './sign-up-page.component';
+import { PageHeaderModule } from '@ui/page-header/page-header.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SignUpPageComponent } from './sign-up-page.component';
   ],
   imports: [
     CommonModule,
-    SignUpPageRoutingModule
+    SignUpPageRoutingModule,
+    PageHeaderModule
   ]
 })
 export class SignUpPageModule { }
