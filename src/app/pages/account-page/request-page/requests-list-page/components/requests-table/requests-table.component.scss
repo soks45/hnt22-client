@@ -1,6 +1,8 @@
 @import "assets/styles/variables";
+.mat-mdc-table {
+  box-shadow: none !important;
+}
 .requests-table {
-
   &__btn {
     font-size: 5px;
     padding: 3px;
@@ -8,14 +10,15 @@
     background-color: transparent;
     border: 1px solid transparent;
     cursor: pointer;
+    transition: background-color .2s;
   }
   &__btn:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
   &__btn:active {
-    background-color: blue;
+    background-color: rgba(0, 0, 0, 0.3);
   }
-  &__edit-icon, &__delete-icon {
+  &__edit-icon, &__delete-icon, &__code-icon {
     color: $darkBlue
   }
 }
