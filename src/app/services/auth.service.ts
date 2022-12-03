@@ -16,7 +16,7 @@ export interface SignUpUser extends UserDetails {
 }
 
 export interface Login {
-  username: string;
+  login: string;
   password: string;
 }
 

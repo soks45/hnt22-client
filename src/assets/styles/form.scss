@@ -41,7 +41,6 @@
   }
   &__error {
     margin-top: 5px;
-    visibility: hidden;
     display: block;
     box-sizing: border-box;
     min-height: 30px;
@@ -49,9 +48,6 @@
     font-size: 12px;
     line-height: 15px;
     color: #FF0000;
-  }
-  &__error_visible {
-    visibility: visible;
   }
   &__submit-btn {
     width: 100%;

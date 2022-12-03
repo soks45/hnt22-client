@@ -1,24 +1,44 @@
-    <form class="form login-form">
-      <h2 class="form__title login-form__title">Вход</h2>
-      <div class="form__field">
-        <input
-          class="form__input"
-          placeholder="Login"
-        />
-        <span class="form__error email-error"></span>
-      </div>
-      <div class="form__field">
-        <input type="password"
-               class="form__input"
-               placeholder="Password"
-        />
-        <span class="form__error password-error"></span>
-      </div>
-      <button class="form__submit-btn login-form__btn"
-              type="submit">
-        Войти
-      </button>
-      <a [routerLink]="'/sign-up'" class="login-form__link">
-        Нет аккаунта? Зарегистрироваться
-      </a>
-    </form>
+<form [formGroup]="formGroup" class="form login-form" (submit)="onSubmit()">
+  <h2 class="form__title login-form__title">Вход</h2>
+
+  <div class="form__field">
+    <input formControlName="login"
+           type="text"
+           class="form__input"
+           placeholder="Логин"/>
+
+    <span *ngIf="formGroup.controls['login'].errors &&
+          formGroup.controls['login'].errors['required'] &&
+          formGroup.controls['login'].touched"
+          class="form__error"
+    >
+      Это поле обязательно
+    </span>
+  </div>
+
+  <div class="form__field">
+    <input formControlName="password"
+           type="text"
+           class="form__input"
+           placeholder="Пароль"/>
+
+    <span *ngIf="formGroup.controls['password'].errors &&
+               formGroup.controls['password'].errors['required'] &&
+               formGroup.controls['login'].touched"
+          class="form__error"
+    >
+      Это поле обязательно
+    </span>
+  </div>
+
+  <button class="form__submit-btn login-form__btn"
+          type="submit"
+          (submit)="onSubmit()"
+  >
+    Войти
+  </button>
+
+  <a [routerLink]="'/sign-up'" class="login-form__link">
+    Нет аккаунта? Зарегистрироваться
+  </a>
+</form>
