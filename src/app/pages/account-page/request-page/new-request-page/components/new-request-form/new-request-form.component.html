@@ -6,6 +6,8 @@
     </mat-select>
     <mat-error *ngIf="formGroup.controls['vehicleId'].errors &&
                formGroup.controls['vehicleId'].errors['required']"
-               class="form__error"></mat-error>
+               class="form__error">
+      Это поле обязательно
+    </mat-error>
   </mat-form-field>
 </form>
