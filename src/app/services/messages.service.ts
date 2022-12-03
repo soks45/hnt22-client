@@ -39,7 +39,7 @@ export class MessagesService {
             duration: 300000,
             verticalPosition: 'top',
             horizontalPosition: 'right',
-            panelClass: [`mat-snack-bar-container--${type}`],
+            panelClass: [`mat-snack-bar-container--${type}`, `mat-mdc-snack-bar-container--${type}`],
         });
     }
 }
