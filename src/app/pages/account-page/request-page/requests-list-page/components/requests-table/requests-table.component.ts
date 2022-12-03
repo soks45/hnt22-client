@@ -7,6 +7,8 @@ import { Vehicle } from '@models/vehicle';
 import {
   UpdateRequestStatusDialogComponent, UpdateRequestStatusDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.component';
+import { DeleteConfirmationStatusDialogComponent } from './components/delete-confirmation-status-dialog/delete-confirmation-status-dialog.component';
+import { QrCodeComponent } from '@ui/qr-code/qr-code.component';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
 import { Observable, of } from 'rxjs';
@@ -46,6 +48,22 @@ export class RequestsTableComponent {
 
   edit(request: CarrierRequest): void {
     this.dialog.open(UpdateRequestStatusDialogComponent, {
+      closeOnNavigation: true,
+      backdropClass: 'update-request-status-dialog-backdrop',
+      panelClass: 'update-request-status-dialog-panel',
+      data: <UpdateRequestStatusDialogData> { request }
+    })
+  }
+  deleteReq(request: CarrierRequest): void {
+    this.dialog.open(DeleteConfirmationStatusDialogComponent, {
+      closeOnNavigation: true,
+      backdropClass: 'update-request-status-dialog-backdrop',
+      panelClass: 'update-request-status-dialog-panel',
+      data: <UpdateRequestStatusDialogData> { request }
+    })
+  }
+  showCode(request: CarrierRequest): void {
+    this.dialog.open(QrCodeComponent, {
       closeOnNavigation: true,
       backdropClass: 'update-request-status-dialog-backdrop',
       panelClass: 'update-request-status-dialog-panel',

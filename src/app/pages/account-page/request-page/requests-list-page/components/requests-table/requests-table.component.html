@@ -36,10 +36,10 @@
         <mat-icon class="requests-table__edit-icon" (click)="edit(element)">edit</mat-icon>
       </button>
       <button class="requests-table__btn">
-        <mat-icon class="requests-table__delete-icon">delete</mat-icon>
+        <mat-icon class="requests-table__delete-icon" (click)="deleteReq(element)">delete</mat-icon>
       </button>
-      <button class="requests-table__btn">
-        <mat-icon class="requests-table__delete-icon">qr_code_2</mat-icon>
+      <button class="requests-table__btn" (click)="showCode(element)">
+        <mat-icon class="requests-table__edit-icon">qr_code_2</mat-icon>
       </button>
     </td>
   </ng-container>
