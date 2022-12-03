@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotFoundPageRoutingModule } from '@pages/qr-code-page/qr-code-page-routing.module';
 import { QRCodeModule } from 'angularx-qrcode';
 import { QrCodePageComponent } from './qr-code-page.component';
+import { PageHeaderModule } from '@ui/page-header/page-header.module';
 
 
 
@@ -13,7 +14,8 @@ import { QrCodePageComponent } from './qr-code-page.component';
   imports: [
     CommonModule,
     NotFoundPageRoutingModule,
-    QRCodeModule
+    QRCodeModule,
+    PageHeaderModule
   ]
 })
 export class QrCodePageModule { }

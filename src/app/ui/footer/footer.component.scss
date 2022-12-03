@@ -1,17 +1,20 @@
 .footer {
   font-family: 'Roboto', sans-serif;
   border-top: 1px solid #E8EAF0;
-  margin-top: 35px;
   padding-top: 17px;
   flex-direction: row;
   box-sizing: border-box;
   align-items: flex-start;
+  width: 100%;
 
   &__copyright {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #fff;
-  margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #fff;
+    margin: 0;
   }
+}
+:host {
+  width: 100%;
 }

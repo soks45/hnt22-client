@@ -46,6 +46,8 @@ $htn22-client-theme: mat.define-light-theme((
   min-width: 320px;
   background-color: #fff;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media (max-width: 600px) {
+  .page {
+    padding: 0 10px;
+  }
+}

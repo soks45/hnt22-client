@@ -12,6 +12,6 @@ import { delay } from 'rxjs/operators';
 })
 export class CheckQrCodeResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return of(true).pipe(delay(5000));
+    return of(true).pipe();
   }
 }

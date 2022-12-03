@@ -12,6 +12,6 @@ import { delay } from 'rxjs/operators';
 })
 export class GetRequestResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return of(true).pipe(delay(3000));
+    return of(true).pipe();
   }
 }
