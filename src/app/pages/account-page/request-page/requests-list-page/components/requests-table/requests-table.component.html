@@ -33,7 +33,7 @@
     <th mat-header-cell *matHeaderCellDef> Действия </th>
     <td mat-cell *matCellDef="let element">
       <button class="requests-table__btn">
-        <mat-icon class="requests-table__edit-icon">edit</mat-icon>
+        <mat-icon class="requests-table__edit-icon" (click)="edit(element)">edit</mat-icon>
       </button>
       <button class="requests-table__btn">
         <mat-icon class="requests-table__delete-icon">delete</mat-icon>

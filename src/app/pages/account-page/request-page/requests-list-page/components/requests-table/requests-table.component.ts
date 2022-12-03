@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Organization } from '@models/organization';
 import { CarrierRequest, RequestStatus } from '@models/request';
 import { User } from '@models/user';
 import { Vehicle } from '@models/vehicle';
+import {
+  UpdateRequestStatusDialogComponent, UpdateRequestStatusDialogData
+} from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.component';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
 import { Observable, of } from 'rxjs';
@@ -32,11 +36,20 @@ const ELEMENT_DATA: CarrierRequest[] = [
 export class RequestsTableComponent {
   isAdmin$: Observable<boolean>;
   data$: Observable<CarrierRequest[]>;
-  constructor(private auth: AuthService, private requests: RequestsService) {
+  constructor(private auth: AuthService, private requests: RequestsService, private dialog: MatDialog) {
     this.isAdmin$ = this.auth.isAdmin$;
     /*this.data$ = this.requests.getRequests();*/
     this.data$ = of(ELEMENT_DATA);
   }
 
   displayedColumns: string[] = ['organisation', 'requestId', 'vehicleNumber', 'status', 'actions'];
+
+  edit(request: CarrierRequest): void {
+    this.dialog.open(UpdateRequestStatusDialogComponent, {
+      closeOnNavigation: true,
+      backdropClass: 'update-request-status-dialog-backdrop',
+      panelClass: 'update-request-status-dialog-panel',
+      data: <UpdateRequestStatusDialogData> { request }
+    })
+  }
 }
