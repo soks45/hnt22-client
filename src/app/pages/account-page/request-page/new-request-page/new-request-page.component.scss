@@ -1,5 +1,9 @@
 .new-request-page {
   width: 100%;
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
   &__header {
     margin: 0;
     padding-bottom: 5px;
@@ -13,4 +17,7 @@
 }
 :host {
   flex-grow: 1;
+}
+mat-stepper {
+  background-color: transparent !important;
 }
