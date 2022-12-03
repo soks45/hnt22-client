@@ -36,7 +36,7 @@ export class MessagesService {
 
     private show(message: string, action: string, type: MessageType): void {
         this.matSnackBar.open(message, action, {
-            duration: 300000,
+            duration: 4000,
             verticalPosition: 'top',
             horizontalPosition: 'right',
             panelClass: [`mat-snack-bar-container--${type}`, `mat-mdc-snack-bar-container--${type}`],
