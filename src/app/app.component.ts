@@ -25,22 +25,22 @@ export class AppComponent {
   constructor(private auth: AuthService) {
   }
 
-  login() {
-    this.auth.login({
-      username: 'username',
-      password: 'password',
-    }).subscribe(console.log)
-  }
+  // login() {
+  //   this.auth.login({
+  //     username: 'username',
+  //     password: 'password',
+  //   }).subscribe(console.log)
+  // }
 
-  signup() {
-    this.auth.signup({
-      username: 'username',
-      password: 'password',
-      avatarUrl: 'avatarUrl',
-      firstName: 'firstName',
-      lastName: 'lastName'
-    }).subscribe(console.log);
-  }
+  // signup() {
+  //   this.auth.signup({
+  //     username: 'username',
+  //     password: 'password',
+  //     avatarUrl: 'avatarUrl',
+  //     firstName: 'firstName',
+  //     lastName: 'lastName'
+  //   }).subscribe(console.log);
+  // }
 
   logout() {
     this.auth.logout()
