@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Request } from '@models/request';
 import { AuthService } from '@services/auth.service';
 import { RequestsService } from '@services/requests.service';
+import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
@@ -27,6 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./requests-table.component.scss']
 })
 export class RequestsTableComponent {
+
   constructor(private auth: AuthService, private requests: RequestsService) {
   }
 
