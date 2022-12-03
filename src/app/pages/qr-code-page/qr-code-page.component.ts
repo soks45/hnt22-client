@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'hnt22-qr-code-page',
@@ -7,8 +6,6 @@ import { SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./qr-code-page.component.scss']
 })
 export class QrCodePageComponent {
-
-  qrCodeURL($event: SafeUrl) {
-    console.log($event)
+  constructor() {
   }
 }
