@@ -11,16 +11,17 @@
     line-height: 2;
     color: #333;
     text-decoration: none;
-    transition: color 0.2s linear;
+    transition: border-bottom 0.1s linear;
     height: 100%;
     display: flex;
     position: relative;
-    border-bottom: none;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
   }
 
   &__link:hover {
     cursor: pointer;
-    color: $blue;
+    border-bottom: 2px solid $blue;
   }
 }
 :host {
