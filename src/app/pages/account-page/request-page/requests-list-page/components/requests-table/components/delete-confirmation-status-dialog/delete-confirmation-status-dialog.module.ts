@@ -17,7 +17,11 @@ import { DeleteConfirmationStatusDialogComponent } from './delete-confirmation-s
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatButtonModule,
+  ],
+  exports: [
+    DeleteConfirmationStatusDialogComponent
   ]
 })
 export class DeleteConfirmationStatusDialogModule { }
