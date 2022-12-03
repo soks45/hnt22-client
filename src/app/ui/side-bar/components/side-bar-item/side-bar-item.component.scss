@@ -1,0 +1,30 @@
+.side-bar-item {
+  display: block;
+  &__link {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: opacity .2s;
+    padding-left: 20px;
+  }
+  &__link:hover {
+    opacity: .9;
+  }
+  &__link_active {
+    border-left: 3px solid #0156ff;
+    padding-left: 17px;
+    color: #212121;
+    font-weight: 600;
+  }
+}
+:host {
+  display: block;
+}

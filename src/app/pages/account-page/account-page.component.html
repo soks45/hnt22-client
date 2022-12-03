@@ -1,7 +1,9 @@
 <div class="account-page">
-  <p>account-page works!</p>
-  <hnt22-side-bar [menuItems]="adminUserTabs"></hnt22-side-bar>
-  <router-outlet></router-outlet>
+  <hnt22-page-header [title]="'Личный кабинет'"></hnt22-page-header>
+  <div class="account-page__content">
+    <hnt22-side-bar [menuItems]="adminUserTabs"></hnt22-side-bar>
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 
