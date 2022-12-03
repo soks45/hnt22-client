@@ -31,7 +31,7 @@ export class NewRequestFormComponent {
       ownershipType: OwnershipType.Leasing,
       vehicleId: 1,
       date: 'date',
-      status: true,
+      sma: true,
     }
   ]); // TODO remove mock
   formGroup1: FormGroup;
@@ -53,6 +53,7 @@ export class NewRequestFormComponent {
       model: new FormControl({ value: null, disabled: true}),
       subOrganization: new FormControl({ value: null, disabled: true}),
       serviceType: new FormControl({ value: null, disabled: true}),
+      sma: new FormControl({ value: null, disabled: true}),
     });
 
     this.formGroup3 = new FormGroup({

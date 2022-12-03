@@ -1,0 +1,18 @@
+.requests-list-page {
+  width: 100%;
+
+  &__header {
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #cacdd8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 147.5%;
+    color: #000;
+  }
+}
+
+:host {
+  flex-grow: 1;
+}
