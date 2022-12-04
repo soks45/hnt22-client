@@ -4,15 +4,16 @@ import { DestroyMixin } from '@mixins/destroy.mixin';
 import { BaseObject } from '@mixins/mixins';
 import { CarrierRequest, RequestStatus } from '@models/request';
 import {
-  ShowQrDialogComponent, ShowQrDialogData
+  ShowQrDialogComponent,
+  ShowQrDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/show-qr-dialog/show-qr-dialog.component';
 
 import {
   UpdateRequestStatusDialogComponent,
   UpdateRequestStatusDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/update-request-status-dialog/update-request-status-dialog.component';
-import { MessagesService } from '@services/messages.service';
 import { AuthService } from '@services/auth.service';
+import { MessagesService } from '@services/messages.service';
 import { QrCodesService } from '@services/qr-codes.service';
 import { RequestsService } from '@services/requests.service';
 import { Observable, takeUntil } from 'rxjs';
@@ -62,13 +63,15 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
     this.messages.info('Функция недоступна в этой версии', 'Ок');
   }
   showCode(request: CarrierRequest): void {
-    this.qrService.getQR(request.requestId).subscribe((value) => {
-      this.dialog.open(ShowQrDialogComponent, {
-        closeOnNavigation: true,
-        backdropClass: 'std-backdrop',
-        panelClass: 'show-qr-dialog-panel',
-        data: <ShowQrDialogData> { hash: value.key }
-      });
-    })
+    if (request.status === RequestStatus.Accepted) {
+      this.qrService.getQR(request.requestId).subscribe((value) => {
+        this.dialog.open(ShowQrDialogComponent, {
+          closeOnNavigation: true,
+          backdropClass: 'std-backdrop',
+          panelClass: 'show-qr-dialog-panel',
+          data: <ShowQrDialogData> { hash: value.key }
+        });
+      })
+    }
   }
 }
