@@ -1,8 +1,37 @@
+@import "assets/styles/variables";
+
 .qr-code {
   box-sizing: border-box;
   padding: 15px;
 
-  &__btn {
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+  &__download-btn, &__copy-btn {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  &__download-btn {
+    color: $green;
+    border: 1px solid $green;
+  }
+  &__download-btn:hover {
+    background-color: $green;
+    color: #fff;
+  }
+  &__copy-btn {
+    color: $blue;
+    border: 1px solid $blue;
 
+  }
+  &__copy-btn:hover {
+    background-color: $blue;
+    color: #fff;
   }
 }

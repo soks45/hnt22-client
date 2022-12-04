@@ -7,6 +7,8 @@
         #qr
   >
   </qrcode>
-  <button class="qr-code__btn" (click)="saveAsImage(qr)">Скачать</button>
-  <a class="qr-code__btn" >Скопировать ссылку </a>
+  <div class="qr-code__actions">
+    <button class="qr-code__download-btn" (click)="saveAsImage(qr)">Скачать</button>
+    <button class="qr-code__copy-btn" >Скопировать ссылку </button>
+  </div>
 </div>
