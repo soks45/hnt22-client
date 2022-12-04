@@ -7,8 +7,8 @@ import { GetUserResolver } from 'app/resolvers/get-user.resolver';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('@pages/main-page/main-page.module')
-      .then((m) => m.MainPageModule)
+    redirectTo: 'account',
+    pathMatch: 'full'
   },
   {
     path: 'account',
