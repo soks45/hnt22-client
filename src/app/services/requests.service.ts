@@ -20,6 +20,10 @@ export class RequestsService {
     return this.http.get<CarrierRequest[]>(`${ environment.apiUrl }/Request/GetRequests`, { withCredentials: true });
   }
 
+  getRequestsById(id: number): Observable<CarrierRequest[]> {
+    return this.http.get<CarrierRequest[]>(`${ environment.apiUrl }/Request/GetRequests/${ id }`, { withCredentials: true });
+  }
+
   updateRequest(request: CarrierRequest): Observable<void> {
     return this.http.post<void>(`${ environment.apiUrl }/Request/EditRequest`, request, { withCredentials: true }).pipe(tap(() => this.requestChangesSource$.next()));
   }

@@ -25,7 +25,8 @@ import { tap } from 'rxjs/operators';
 })
 export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   isAdmin$: Observable<boolean>;
-  data$: Observable<CarrierRequest[]>;
+  data$?: Observable<CarrierRequest[]>;
+  private isAdmin: boolean = false;
   constructor(
     private auth: AuthService,
     private requests: RequestsService,
@@ -36,7 +37,14 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
     super();
 
     this.isAdmin$ = this.auth.isAdmin$;
-    this.data$ = this.requests.getRequests();
+    this.isAdmin$.pipe(takeUntil(this.destroyed$)).subscribe(v => {
+      if (v === true) {
+        this.data$ = this.requests.getRequests();
+        return;
+      }
+
+      this.data$ = this.requests.getRequestsById(2); // 8(
+    });
     this.requests.requestChanges$.pipe(takeUntil(this.destroyed$), tap(() => this.data$ = this.requests.getRequests())).subscribe();
   }
 
