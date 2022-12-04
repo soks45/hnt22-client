@@ -39,7 +39,7 @@ export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(Ba
   readonly adminUserTabs: MenuItem[] = [
     {
       name: 'Мой аккаунт',
-      ref: '/account'
+      ref: '/account/details'
     },
     {
       name: 'Заявления',

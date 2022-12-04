@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'hnt22-qr-code',
   templateUrl: './qr-code.component.html',
   styleUrls: ['./qr-code.component.scss']
 })
-export class QrCodeComponent {
+export class QrCodeComponent implements OnInit {
+  qrCodeUrl = '';
+  @Input() hash: string = '';
+  ngOnInit(): void {
+    this.qrCodeUrl = `${ environment.frontUrl }/check-qr-code/${ this.hash }`
+  }
+
+
   saveAsImage(parent: any) {
-    console.log(parent)
     const parentElement = parent.qrcElement.nativeElement.querySelector("img").src;
     let blobData = this.convertBase64ToBlob(parentElement);
     if (window.navigator && (window.navigator as any).msSaveOrOpenBlob) { //IE

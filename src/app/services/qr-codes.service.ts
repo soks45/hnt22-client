@@ -10,7 +10,7 @@ export class QrCodesService {
 
   constructor(private http: HttpClient) { }
 
-  getQR(requestId: string): Observable<string> {
+  getQR(requestId: number): Observable<string> {
     return this.http.get<string>(`${ environment.apiUrl }/Request/GetQrCode/${ requestId }`, { withCredentials: true });
   }
 
