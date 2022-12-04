@@ -54,12 +54,12 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
     this.messages.info('Функция недоступна в этой версии', 'Ок');
   }
   showCode(request: CarrierRequest): void {
-    this.qrService.getQR(request.requestId).subscribe((hash) => {
+    this.qrService.getQR(request.requestId).subscribe((value) => {
       this.dialog.open(ShowQrDialogComponent, {
         closeOnNavigation: true,
         backdropClass: 'std-backdrop',
         panelClass: 'show-qr-dialog-panel',
-        data: <ShowQrDialogData> { hash }
+        data: <ShowQrDialogData> { hash: value.key }
       });
     })
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,9 +6,14 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './check-qr-code-page.component.html',
   styleUrls: ['./check-qr-code-page.component.scss']
 })
-export class CheckQrCodePageComponent {
-  isOk?: boolean;
+export class CheckQrCodePageComponent implements OnInit {
+  result: Request;
+  ok: boolean = false;
   constructor(private activateRoute: ActivatedRoute) {
-    this.isOk = this.activateRoute.snapshot.data['isOk'];
+    this.result = this.activateRoute.snapshot.data['request'];
+  }
+
+  ngOnInit() {
+    this.ok = !!this.result;
   }
 }
