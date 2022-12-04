@@ -1,5 +1,5 @@
 export interface Organization {
   name: string;
-  INN: number;
+  inn: number;
   organizationId: number;
 }

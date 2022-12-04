@@ -1,20 +1,20 @@
 export enum Country {
-  Russia = 'russia',
-  Unknown = 'unknown',
-  Import = 'import'
+  Russia = 'РОССИЯ',
+  Unknown = 'Не определено',
+  Import = 'ИМПОРТ'
 }
 
 export enum FuelType {
-  Diesel = 'diesel',
-  Unknown = 'unknown',
-  Petrol = 'petrol'
+  Diesel = 'ДТ',
+  Unknown = 'Не определено',
+  Petrol = 'БЕНЗИН'
 }
 
 export enum OwnershipType {
-  Contract = 'contract',
-  Rent = 'rent',
-  Leasing = 'leasing',
-  Unknown = 'unknown'
+  Contract = 'договор купли продажи',
+  Rent = 'аренда',
+  Leasing = 'лизинг',
+  Unknown = ''
 }
 export interface Vehicle {
   organization: string;

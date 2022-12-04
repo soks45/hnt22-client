@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Country, FuelType, OwnershipType, Vehicle } from '@models/vehicle';
+import { Vehicle } from '@models/vehicle';
 import { MessagesService } from '@services/messages.service';
 import { VehiclesService } from '@services/vehicles.service';
-import { Observable, of } from 'rxjs';
-
-interface NewRequest {
-  vehicleId: number;
-}
+import {  Observable, of } from 'rxjs';
+import { delay, finalize, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'hnt22-new-request-form',
@@ -17,23 +14,156 @@ interface NewRequest {
 export class NewRequestFormComponent {
   vehicles$: Observable<Vehicle[]> = of([
     {
-      organization: 'organization',
-      vehicleNumber: 'vehicleNumber',
-      model: 'model',
-      code: 'code',
-      serviceType: 'serviceType',
-      vehicleType: 'vehicleType',
-      vehicleTypeExt: 'vehicleTypeExt',
-      vehicleChars: 'vehicleChars',
-      country: Country.Russia,
-      fuelType: FuelType.Diesel,
-      subOrganization: true,
-      ownershipType: OwnershipType.Leasing,
       vehicleId: 1,
-      date: 'date',
-      sma: true,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "КАМАЗ-44108-RF Седельный тягач",
+      vehicleNumber: "О557ВВ148",
+      vehicleType: "Автобусы и грузопассажирские автомобили на шасси грузовых автомобилей",
+      serviceType: "Обслуживание пассажироперевозящей техникой",
+      vehicleTypeExt: "ГПА и автобусы на шасси грузового автомобиля г/п до 5тн.",
+      vehicleChars: "до 14 п.м.",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "",
+      sma: false
+    },
+    {
+      vehicleId: 2,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "КАМАЗ-4326 НЕФАЗ-42111-10-16",
+      vehicleNumber: "О329АМ148",
+      vehicleType: "Автомобильный спец.транспорт для перевозки грузов",
+      serviceType: "Грузовая техника",
+      vehicleTypeExt: "Бортовой без КМУ (включая автопоезда с прицепом, п/прицепом)",
+      vehicleChars: "14.1 - 20 т",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "",
+      sma: true
+    },
+    {
+      vehicleId: 911,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "СИН 32 на шасси КАМАЗ 43118-46 агрегат для кислотной обработки скважин",
+      vehicleNumber: "А931НН148",
+      vehicleType: "Автомобильный спец.транспорт, включая автопоезда",
+      serviceType: "Обслуживание специализированной техникой",
+      vehicleTypeExt: "Автокран",
+      vehicleChars: "16.1 - 25 т",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "аренда",
+      sma: false
+    },
+    {
+      vehicleId: 931,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "УРАЛ 44202-3511-82",
+      vehicleNumber: "А821ЕЕ148",
+      vehicleType: "Автомобильный спец.транспорт, включая автопоезда",
+      serviceType: "Обслуживание специализированной техникой",
+      vehicleTypeExt: "Автомобильный кран-манипулятор (включая автопоезда)",
+      vehicleChars: "7.1 - 12 т",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "аренда",
+      sma: false
+    },
+    {
+      vehicleId: 942,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "Кавз-4238-71",
+      vehicleNumber: "Е653ТО82",
+      vehicleType: "Автомобильный спец.транспорт для перевозки грузов",
+      serviceType: "Грузовая техника",
+      vehicleTypeExt: "Автоцистерны вакуумные для сбора нефтешлама и розливов нефти",
+      vehicleChars: "до 10 м3",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "",
+      sma: true
+    },
+    {
+      vehicleId: 949,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "КАМАЗ-43118-50 АТЗ (7074А4-50)",
+      vehicleNumber: "А560ХА148",
+      vehicleType: "Самоходные машины и технологические установки на их базе",
+      serviceType: "Обслуживание специализированной техникой",
+      vehicleTypeExt: "Трактор колесный",
+      vehicleChars: "81 - 150 л.с.",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Нет",
+      ownershipType: "",
+      sma: false
+    },
+    {
+      vehicleId: 969,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "КАМАЗ-65111-50 АЦН-16 (4679А4-10)",
+      vehicleNumber: "Н140ХА48",
+      vehicleType: "Автобусы и грузопассажирские автомобили на шасси грузовых автомобилей",
+      serviceType: "Обслуживание пассажироперевозящей техникой",
+      vehicleTypeExt: "ГПА и автобусы на шасси грузового автомобиля г/п свыше 5тн.",
+      vehicleChars: "до 20 п.м.",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "аренда",
+      sma: false
+    },
+    {
+      vehicleId: 972,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "LIUGONG CLG836 погрузчик",
+      vehicleNumber: "ТР356070",
+      vehicleType: "Автомобильный спец.транспорт, включая автопоезда",
+      serviceType: "Обслуживание специализированной техникой",
+      vehicleTypeExt: "Автомобильный кран-манипулятор (включая автопоезда)",
+      vehicleChars: "7.1 - 12 т",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Нет",
+      ownershipType: "",
+      sma: true
+    },
+    {
+      vehicleId: 975,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "MITSUBISHI L-200",
+      vehicleNumber: "Р334АТ148",
+      vehicleType: "Автомобильный спец.транспорт для перевозки грузов",
+      serviceType: "Грузовая техника",
+      vehicleTypeExt: "Тягач с низкорамным прицепом, п/прицепом (трал)",
+      vehicleChars: "20.1 - 40 т",
+      country: "ИМПОРТ",
+      fuelType: "ДТ",
+      subOrganization: "Нет",
+      ownershipType: "договор купли продажи",
+      sma: false
+    },
+    {
+      vehicleId: 996,
+      organization: "ООО \"НефтеСпецТранс\"",
+      model: "УРАЛ 44202-3511-82",
+      vehicleNumber: "Е750СК82",
+      vehicleType: "Автомобильный спец.транспорт, включая автопоезда",
+      serviceType: "Обслуживание специализированной техникой",
+      vehicleTypeExt: "Автогидроподъемник, автовышка",
+      vehicleChars: "17.1 - 30 м",
+      country: "РОССИЯ",
+      fuelType: "ДТ",
+      subOrganization: "Да",
+      ownershipType: "",
+      sma: true
     }
-  ]); // TODO remove mock
+  ]) as any as Observable<Vehicle[]>; // TODO remove mock
   formGroup1: FormGroup;
   formGroup2: FormGroup;
   formGroup3: FormGroup;
@@ -73,8 +203,19 @@ export class NewRequestFormComponent {
     return fg.valid;
   }
 
-  onSubmit() {
+  onSubmit(): void {
+    if (!this.checkForm(this.formGroup1)) {
+      return;
+    }
 
+    this.isLoading = true;
+
+    of(true)
+      .pipe(delay(4000),
+        tap(() => this.messages.success(`Заявление создано!`)),
+        finalize(() => (this.isLoading = false))
+      )
+      .subscribe();
   }
 
   setUpForm(vehicle: Vehicle) {

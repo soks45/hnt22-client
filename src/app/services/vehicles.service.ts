@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '@environments/environment.prod';
+import { environment } from '@environments/environment';
+import { Organization } from '@models/organization';
 import { Vehicle } from '@models/vehicle';
 import { Observable } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class VehiclesService {
   constructor(private http: HttpClient) { }
 
-  getVehicles(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`${ environment.apiUrl }/`, { withCredentials: true });
+  getVehicles(organisation: Organization): Observable<Vehicle[]> {
+    return this.http.post<Vehicle[]>(`${ environment.apiUrl }/Vehicle/GetVehicles`, organisation, { withCredentials: true });
   }
 }

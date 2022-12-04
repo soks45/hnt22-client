@@ -38,8 +38,8 @@ export class AuthService implements OnDestroy {
 
       if (event.key === 'login-event') {
         this.stopTokenTimer();
-        this.http.get<LoginResult>(`${ environment.apiUrl }/api/account/user`)
-          .pipe(tap(x => this.userSource$.next(x)))
+        this.http.get<LoginResult>(`${ environment.apiUrl }/account/user`)
+          .pipe(tap(x => this.userSource$.next({ ...x })))
           .subscribe();
       }
     }
@@ -59,7 +59,7 @@ export class AuthService implements OnDestroy {
       .pipe(
         tap((x) => {
           console.log(x, 'login');
-          this.userSource$.next(x);
+          this.userSource$.next({ ...x });
           this.setLocalStorage(x);
           this.startTokenTimer();
         })
@@ -71,7 +71,7 @@ export class AuthService implements OnDestroy {
       .post<LoginResult>(`${ environment.apiUrl }/account/register`, user)
       .pipe(
         tap((x) => {
-          this.userSource$.next(x);
+          this.userSource$.next({ ...x });
           this.setLocalStorage(x);
           this.startTokenTimer();
         })
@@ -103,7 +103,7 @@ export class AuthService implements OnDestroy {
       .post<LoginResult>(`${ environment.apiUrl }/account/refresh-token`, { refreshToken })
       .pipe(
         tap((x) => {
-          this.userSource$.next(x);
+          this.userSource$.next({ ...x });
           this.setLocalStorage(x);
           this.startTokenTimer();
         })

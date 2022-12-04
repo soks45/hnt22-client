@@ -104,7 +104,7 @@
   <mat-step>
     <ng-template matStepLabel>Отправить</ng-template>
     <div>
-      <button mat-button (click)="onSubmit()" class="form__submit-btn">Отправить</button>
+      <button mat-button (click)="onSubmit()" class="form__submit-btn" [disabled]="isLoading">Отправить</button>
     </div>
   </mat-step>
 </mat-stepper>
