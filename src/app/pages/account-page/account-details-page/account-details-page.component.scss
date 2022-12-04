@@ -1,0 +1,42 @@
+@import "assets/styles/variables";
+.account-details-page {
+  width: 100%;
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
+
+  &__header {
+    margin: 0 0 30px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #cacdd8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 147.5%;
+    color: #000;
+  }
+  &__H3 {
+    margin: 0 0 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+  }
+  &__P {
+    margin: 0 0 15px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+  }
+  }
+:host {
+  flex-grow: 1;
+}

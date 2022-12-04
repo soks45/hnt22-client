@@ -15,10 +15,6 @@ export class AppComponent {
       ref: '/'
     },
     {
-      name: 'Вход',
-      ref: '/sign-in'
-    },
-    {
       name: 'FAQ',
       ref: '/'
     },

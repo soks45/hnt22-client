@@ -1,3 +1,4 @@
+@import "assets/styles/variables";
 .header {
   width: 100%;
   background-color: #fff;
@@ -11,9 +12,27 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
+    align-items: center;
   }
   &__logo {
     height: 55px;
+  }
+  &__btn {
+    margin-left: 40px;
+    padding: 5px 30px;
+    height: 45px;
+    color: $blue;
+    border: 1px solid $blue;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+  }
+    &__btn:hover {
+      background-color: $blue;
+      color: #fff;
   }
   @media (max-width: 600px) {
     &__logo {
