@@ -2,7 +2,7 @@
   <div class="header__content">
     <img src='assets/images/logo.png' alt="Логотип" class="header__logo" />
     <hnt22-menu [menuItems]="menuItems"></hnt22-menu>
-    <button class="header__btn" [routerLink]="'/sign-in'" *ngIf="user">Вход</button>
-    <button class="header__btn" (click)="logout()" *ngIf="!user">Выйти</button>
+    <button class="header__btn" [routerLink]="'/sign-in'" *ngIf="user === null">Вход</button>
+    <button class="header__btn" (click)="logout()" *ngIf="user !== null">Выйти</button>
   </div>
 </header>

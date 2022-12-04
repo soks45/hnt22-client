@@ -83,6 +83,7 @@ export class AuthService implements OnDestroy {
       .post<void>(`${ environment.apiUrl }/account/logout`, {})
       .pipe(
         finalize(() => {
+          this.router.navigate(['sign-in']);
           this.clearLocalStorage();
           this.userSource$.next(null);
           this.stopTokenTimer();
