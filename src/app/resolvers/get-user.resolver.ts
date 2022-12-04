@@ -5,25 +5,17 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { User } from '@models/user';
-import { Observable, of } from 'rxjs';
+import { AuthService } from '@services/auth.service';
+import { filter, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetUserResolver implements Resolve<User> {
+  constructor(private auth: AuthService) {
+  }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
-    return of({
-      userId: 1,
-      login: 'login',
-      firstName: 'firstName',
-      lastName: 'lastName',
-      organization: {
-        organizationId: 1,
-        INN: 1,
-        name: 'daw'
-      },
-      jobTitle: 'jobTitle',
-      isAdmin: false
-    });
+    // @ts-ignore
+    return this.auth.user$.pipe(filter(u => u !== null));
   }
 }

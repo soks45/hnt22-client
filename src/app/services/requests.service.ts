@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { CarrierRequest } from '@models/request';
-import { Observable, Subject } from 'rxjs';
+import { AuthService } from '@services/auth.service';
+import { Observable, Subject, take } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { tap } from 'rxjs/operators';
 export class RequestsService {
   requestChanges$: Observable<void>;
   private requestChangesSource$: Subject<void> = new Subject<void>();
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
     this.requestChanges$ = this.requestChangesSource$.asObservable();
   }
 

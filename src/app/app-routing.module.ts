@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@guards/auth.guard';
-import { GetRequestResolver } from 'app/resolvers/get-request.resolver';
+import { CheckQrCodeResolver } from 'app/resolvers/check-qr-code.resolver';
 import { GetUserResolver } from 'app/resolvers/get-user.resolver';
 
 const routes: Routes = [
@@ -28,13 +28,8 @@ const routes: Routes = [
     path: 'check-qr-code/:id',
     loadChildren: () =>  import('@pages/check-qr-code-page/check-qr-code-page.module')
       .then((m) => m.CheckQrCodePageModule),
-  },
-  {
-    path: 'qr-code/:hash',
-    loadChildren: () => import('@pages/qr-code-page/qr-code-page.module')
-      .then((m) => m.QrCodePageModule),
     resolve: {
-      request: GetRequestResolver
+      request: CheckQrCodeResolver
     }
   },
   {
