@@ -79,18 +79,10 @@
     </div>
     <div class="ok-result__field">
       <h3 class="ok-result__h3">
-        ID Тс
-      </h3>
-      <p class="ok-result__text">
-        Да\нет
-      </p>
-    </div>
-    <div class="ok-result__field">
-      <h3 class="ok-result__h3">
         СМА
       </h3>
       <p class="ok-result__text">
-        Да\нет
+        {{ request.vehicle.sma ? 'Да' : 'Нет' }}
       </p>
     </div>
   </div>
