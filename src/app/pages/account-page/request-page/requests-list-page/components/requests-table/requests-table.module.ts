@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   ShowQrDialogModule
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/show-qr-dialog/show-qr-dialog.module';
@@ -14,14 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
   declarations: [
     RequestsTableComponent
   ],
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatIconModule,
-    UpdateRequestStatusDialogModule,
-    PipesModule,
-    ShowQrDialogModule
-  ],
+    imports: [
+        CommonModule,
+        MatTableModule,
+        MatIconModule,
+        UpdateRequestStatusDialogModule,
+        PipesModule,
+        ShowQrDialogModule,
+        MatTooltipModule
+    ],
   exports: [
     RequestsTableComponent
   ]

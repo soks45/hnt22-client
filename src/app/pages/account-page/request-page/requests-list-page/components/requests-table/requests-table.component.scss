@@ -21,4 +21,22 @@
   &__edit-icon, &__delete-icon, &__code-icon {
     color: $darkBlue
   }
+
+  &__status-icon {
+    &--accepted {
+      color: $teal;
+    }
+
+    &--rejected {
+      color: $red;
+    }
+
+    &--send {
+      color: $blue;
+    }
+
+    &--processing {
+      color: $blue;
+    }
+  }
 }

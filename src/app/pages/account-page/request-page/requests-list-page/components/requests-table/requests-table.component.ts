@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DestroyMixin } from '@mixins/destroy.mixin';
 import { BaseObject } from '@mixins/mixins';
-import { CarrierRequest } from '@models/request';
+import { CarrierRequest, RequestStatus } from '@models/request';
 import {
   ShowQrDialogComponent, ShowQrDialogData
 } from '@pages/account-page/request-page/requests-list-page/components/requests-table/components/show-qr-dialog/show-qr-dialog.component';
@@ -26,7 +26,7 @@ import { tap } from 'rxjs/operators';
 export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   isAdmin$: Observable<boolean>;
   data$?: Observable<CarrierRequest[]>;
-  private isAdmin: boolean = false;
+  statuses = RequestStatus;
   constructor(
     private auth: AuthService,
     private requests: RequestsService,
