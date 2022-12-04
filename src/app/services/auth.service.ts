@@ -27,7 +27,7 @@ export class AuthService implements OnDestroy {
   private timer: Subscription | null = null;
   private userSource$ = new BehaviorSubject<User | null>(null);
   user$ = this.userSource$.asObservable();
-  isAdmin$ = this.userSource$.asObservable().pipe(map((u) => u?.organization.organizationId === 1));
+  isAdmin$ = this.userSource$.asObservable().pipe(map((u) => u?.organization?.organizationId === 1));
 
   private storageEventListener(event: StorageEvent) {
     if (event.storageArea === localStorage) {

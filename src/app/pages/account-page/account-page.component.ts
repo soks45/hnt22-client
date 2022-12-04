@@ -3,24 +3,23 @@ import { DestroyMixin } from '@mixins/destroy.mixin';
 import { HasUserFromRouterMixin } from '@mixins/has-user-from-router';
 import { BaseObject } from '@mixins/mixins';
 import { MenuItem } from '@models/menu-item';
+import { AuthService } from '@services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'hnt22-account-page',
   templateUrl: './account-page.component.html',
   styleUrls: ['./account-page.component.scss']
 })
-export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(BaseObject)) implements OnInit {
-  constructor() {
+export class AccountPageComponent extends HasUserFromRouterMixin(DestroyMixin(BaseObject)) {
+
+  isAdmin$: Observable<boolean>;
+  constructor(private auth: AuthService) {
     super();
+
+    this.isAdmin$ = this.auth.isAdmin$;
   }
 
-  ngOnInit(): void {
-
-  }
-
-  get isAdmin(): boolean {
-    return this.user.organization.organizationId === 1;
-  }
   readonly defaultUserTabs: MenuItem[] = [
     {
       name: 'Мой аккаунт',

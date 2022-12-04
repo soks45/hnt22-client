@@ -1,7 +1,7 @@
 <div class="account-page">
   <hnt22-page-header [title]="'Личный кабинет'"></hnt22-page-header>
   <div class="account-page__content">
-    <hnt22-side-bar [menuItems]="isAdmin ? adminUserTabs : defaultUserTabs"></hnt22-side-bar>
+    <hnt22-side-bar [menuItems]="(isAdmin$ | async) ? adminUserTabs : defaultUserTabs"></hnt22-side-bar>
     <router-outlet></router-outlet>
   </div>
 </div>
