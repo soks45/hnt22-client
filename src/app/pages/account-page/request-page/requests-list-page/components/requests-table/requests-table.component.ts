@@ -41,7 +41,7 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   edit(request: CarrierRequest): void {
     this.dialog.open(UpdateRequestStatusDialogComponent, {
       closeOnNavigation: true,
-      backdropClass: 'update-request-status-dialog-backdrop',
+      backdropClass: 'std-backdrop',
       panelClass: 'update-request-status-dialog-panel',
       data: <UpdateRequestStatusDialogData> { request }
     })
@@ -52,7 +52,7 @@ export class RequestsTableComponent extends DestroyMixin(BaseObject) {
   showCode(request: CarrierRequest): void {
     this.dialog.open(QrCodeComponent, {
       closeOnNavigation: true,
-      backdropClass: 'show-qr-dialog-backdrop',
+      backdropClass: 'std-backdrop',
       panelClass: 'show-qr-dialog-panel',
     })
   }

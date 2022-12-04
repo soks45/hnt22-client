@@ -7,5 +7,7 @@
         #qr
   >
   </qrcode>
-  <button mat-button class="qr-code__btn" (click)="saveAsImage(qr)">Скачать</button>
+  <div class="qr-code__actions">
+    <button mat-button class="qr-code__download-btn" (click)="saveAsImage(qr)">Скачать</button>
+  </div>
 </div>
