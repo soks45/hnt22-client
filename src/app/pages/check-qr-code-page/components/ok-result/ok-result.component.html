@@ -10,7 +10,7 @@
         Организация:
       </h3>
       <p class="ok-result__text">
-        ООО Газпром
+        {{ request.organization.name }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -18,7 +18,7 @@
         Гос.Номер:
       </h3>
       <p class="ok-result__text">
-        ООО Газпром
+        {{ request.vehicle.vehicleNumber }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -26,7 +26,7 @@
         Модель ТС:
       </h3>
       <p class="ok-result__text">
-        какая-то модель
+        {{ request.vehicle.model }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -34,7 +34,7 @@
         Тип ТС:
       </h3>
       <p class="ok-result__text">
-        Какой-то тип
+        {{ request.vehicle.vehicleType }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -42,7 +42,7 @@
         Тип транспортной услуги:
       </h3>
       <p class="ok-result__text">
-        какая-то модель
+        {{ request.vehicle.serviceType }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -50,7 +50,7 @@
         Хар-ки:
       </h3>
       <p class="ok-result__text">
-        какая-то модель
+        {{ request.vehicle.vehicleChars }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -58,7 +58,7 @@
         Страна-производитель ТС
       </h3>
       <p class="ok-result__text">
-        какая-то модель
+        {{ request.vehicle.country }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -66,7 +66,7 @@
         Вид топлива
       </h3>
       <p class="ok-result__text">
-        какая-то модель
+        {{ request.vehicle.fuelType }}
       </p>
     </div>
     <div class="ok-result__field">
@@ -74,7 +74,7 @@
         Субподрядчик
       </h3>
       <p class="ok-result__text">
-        Да\нет
+        {{ request.vehicle.subOrganization ? 'Да' : 'Нет' }}
       </p>
     </div>
     <div class="ok-result__field">
