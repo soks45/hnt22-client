@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CarrierRequest } from '@models/request';
 
 @Component({
   selector: 'hnt22-ok-result',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./ok-result.component.scss']
 })
 export class OkResultComponent {
-
+  @Input() request!: CarrierRequest;
 }

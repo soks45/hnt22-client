@@ -1,12 +1,12 @@
 <div class="account-details-page">
   <h2 class="account-details-page__header">Об аккаунте</h2>
   <h3 class="account-details-page__H3">Фамилия</h3>
-  <p class="account-details-page__P">Иванов</p>
+  <p class="account-details-page__P">{{(user$ | async)?.lastName}}</p>
   <h3 class="account-details-page__H3">Имя</h3>
-  <p class="account-details-page__P">Иван</p>
+  <p class="account-details-page__P">{{(user$ | async)?.firstName}}</p>
   <h3 class="account-details-page__H3">Организация</h3>
-  <p class="account-details-page__P">ООО Ивановский текстиль</p>
+  <p class="account-details-page__P">{{(user$ | async)?.organization?.name}}</p>
   <h3 class="account-details-page__H3">Должность</h3>
-  <p class="account-details-page__P">Текстильный эксперт</p>
+  <p class="account-details-page__P">{{(user$ | async)?.jobTitle}}</p>
 </div>
 

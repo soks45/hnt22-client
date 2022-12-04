@@ -47,7 +47,7 @@ export class LoginFormComponent extends FormMixin<Constructor, Login>(BaseObject
       .pipe(
         tap((v) => {
           this.messages.success(`Доброй день, ${v.firstName} ${v.lastName}!`);
-          this.router.navigate(['/account']);
+          this.router.navigate(['/account/details']);
         }),
         finalize(() => (this.isLoading = false))
       )
