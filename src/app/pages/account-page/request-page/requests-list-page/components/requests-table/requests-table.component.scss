@@ -1,4 +1,8 @@
 @import "assets/styles/variables";
+.actions {
+  display: flex;
+  justify-content: center;
+}
 .mat-mdc-table {
   box-shadow: none !important;
 }
