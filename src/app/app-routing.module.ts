@@ -30,7 +30,7 @@ const routes: Routes = [
       .then((m) => m.CheckQrCodePageModule),
   },
   {
-    path: 'qr-code/:id',
+    path: 'qr-code/:hash',
     loadChildren: () => import('@pages/qr-code-page/qr-code-page.module')
       .then((m) => m.QrCodePageModule),
     resolve: {

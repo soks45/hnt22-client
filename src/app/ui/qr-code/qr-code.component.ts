@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class QrCodeComponent {
   saveAsImage(parent: any) {
+    console.log(parent)
     const parentElement = parent.qrcElement.nativeElement.querySelector("img").src;
     let blobData = this.convertBase64ToBlob(parentElement);
     if (window.navigator && (window.navigator as any).msSaveOrOpenBlob) { //IE
