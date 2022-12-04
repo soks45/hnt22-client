@@ -9,7 +9,7 @@ import { PageHeaderModule } from '@ui/page-header/page-header.module';
 
 @NgModule({
   declarations: [
-    AccountPageComponent
+    AccountPageComponent,
   ],
   imports: [
     CommonModule,

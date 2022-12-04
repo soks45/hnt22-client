@@ -7,7 +7,7 @@ import { GetUserResolver } from 'app/resolvers/get-user.resolver';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'account',
+    redirectTo: 'sign-in',
     pathMatch: 'full'
   },
   {

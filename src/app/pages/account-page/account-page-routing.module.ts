@@ -8,6 +8,11 @@ const routes: Routes = [
     component: AccountPageComponent,
     children: [
       {
+        path: 'details',
+        loadChildren: () => import('@pages/account-page/account-details-page/account-details-page.module')
+          .then((m) => m.AccountDetailsPageModule)
+      },
+      {
         path: 'request',
         loadChildren: () => import('@pages/account-page/request-page/request-page.module')
           .then((m) => m.RequestPageModule)
